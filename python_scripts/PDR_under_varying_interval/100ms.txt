@@ -1,0 +1,572 @@
+0
+Waf: Leaving directory `/home/akurt/newTryns3/ETED_PDR/changeLppInterval/100ms/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (1m39.623s)
+I am 8 and I claimed to be the closest 
+Found the claimers at 51.425
+----------------
+{9,191.478}
+{1,206.325}
+{3,216.324}
+{6,220.202}
+{2,221.398}
+{8,224.564}
+{4,227.405}
+{7,240.637}
+{5,299.658}
+{10,302.223}
+Flow ID: 1 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4873
+Rx Packets = 4455
+Throughput: 0.0533691 Mbps
+-0.427417
++112946401.0ns
+Flow ID: 2 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 4535
+Throughput: 0.0541488 Mbps
+0.00267513
++126450748.0ns
+Flow ID: 3 Src Addr 10.1.1.6 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 4798
+Throughput: 0.0572999 Mbps
+-0.0160781
++20008386.0ns
+Flow ID: 4 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4862
+Rx Packets = 4776
+Throughput: 0.0571088 Mbps
+-0.0181918
++25837457.0ns
+Flow ID: 5 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4860
+Rx Packets = 0
+Throughput: -0 Mbps
+-102.988
++0.0ns
+Command ['/home/akurt/newTryns3/ETED_PDR/changeLppInterval/100ms/ns-3.29/build/scratch/distributed/distributed', '--topology=0'] terminated with signal SIGIOT. Run it under a debugger to get more information (./waf --run <program> --command-template="gdb --args %s <args>").
+1
+Waf: Entering directory `/home/akurt/newTryns3/ETED_PDR/changeLppInterval/100ms/ns-3.29/build'
+Waf: Leaving directory `/home/akurt/newTryns3/ETED_PDR/changeLppInterval/100ms/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (26.988s)
+I am 10 and I claimed to be the closest 
+Found the claimers at 51.937
+----------------
+{10,131.773}
+{7,155.055}
+{3,165.886}
+{1,179.836}
+{8,181.687}
+{9,206.812}
+{5,223.052}
+{6,244.779}
+{2,257}
+{4,318.787}
+Flow ID: 1 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4873
+Rx Packets = 4465
+Throughput: 0.0532588 Mbps
+0.00176589
++20310474.0ns
+Flow ID: 2 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 4424
+Throughput: 0.0530747 Mbps
+-0.469157
++64150672.0ns
+Flow ID: 3 Src Addr 10.1.1.6 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 4526
+Throughput: 0.0540528 Mbps
+-0.0184965
++27241078.0ns
+Flow ID: 4 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4862
+Rx Packets = 4582
+Throughput: 0.0547786 Mbps
+0.000757625
++26992983.0ns
+Flow ID: 5 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4860
+Rx Packets = 4596
+Throughput: 0.0549684 Mbps
+0.00106579
++16433595.0ns
+Command ['/home/akurt/newTryns3/ETED_PDR/changeLppInterval/100ms/ns-3.29/build/scratch/distributed/distributed', '--topology=1'] terminated with signal SIGIOT. Run it under a debugger to get more information (./waf --run <program> --command-template="gdb --args %s <args>").
+2
+Waf: Entering directory `/home/akurt/newTryns3/ETED_PDR/changeLppInterval/100ms/ns-3.29/build'
+Waf: Leaving directory `/home/akurt/newTryns3/ETED_PDR/changeLppInterval/100ms/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (24.520s)
+I am 4 and I claimed to be the closest 
+Found the claimers at 62.4104
+----------------
+{4,121.417}
+{1,129.596}
+{5,151.875}
+{6,164.204}
+{3,174.221}
+{7,192.193}
+{8,248.252}
+{10,255.417}
+{2,262.564}
+{9,268.002}
+Flow ID: 1 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4873
+Rx Packets = 4626
+Throughput: 0.0551793 Mbps
+0.00160717
++88352287.0ns
+Flow ID: 2 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 4353
+Throughput: 0.0519757 Mbps
+0.00261744
++102446755.0ns
+Flow ID: 3 Src Addr 10.1.1.6 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 4823
+Throughput: 0.0575997 Mbps
+-0.0182394
++14168398.0ns
+Flow ID: 4 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4862
+Rx Packets = 4801
+Throughput: 0.0573968 Mbps
+0.000739588
++6254505.0ns
+Flow ID: 5 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4860
+Rx Packets = 3944
+Throughput: 0.0471696 Mbps
+0.00291819
++197239448.0ns
+Command ['/home/akurt/newTryns3/ETED_PDR/changeLppInterval/100ms/ns-3.29/build/scratch/distributed/distributed', '--topology=2'] terminated with signal SIGIOT. Run it under a debugger to get more information (./waf --run <program> --command-template="gdb --args %s <args>").
+3
+Waf: Entering directory `/home/akurt/newTryns3/ETED_PDR/changeLppInterval/100ms/ns-3.29/build'
+Waf: Leaving directory `/home/akurt/newTryns3/ETED_PDR/changeLppInterval/100ms/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (53.004s)
+I am 8 and I claimed to be the closest 
+Found the claimers at 50.7082
+----------------
+{8,66.1665}
+{5,118.106}
+{7,125.028}
+{9,140.78}
+{1,172.293}
+{3,198.066}
+{10,200.272}
+{6,235.601}
+{2,238.095}
+{4,293.073}
+Flow ID: 1 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4873
+Rx Packets = 4787
+Throughput: 0.0571002 Mbps
+0.000730587
++37893381.0ns
+Flow ID: 2 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 4594
+Throughput: 0.0548541 Mbps
+0.00116989
++65615209.0ns
+Flow ID: 3 Src Addr 10.1.1.6 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 4167
+Throughput: 0.0500015 Mbps
+-0.488989
++171681689.0ns
+Flow ID: 4 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4862
+Rx Packets = 4841
+Throughput: 0.057875 Mbps
+0.000662296
++25369314.0ns
+Flow ID: 5 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4860
+Rx Packets = 4560
+Throughput: 0.0545378 Mbps
+0.00117891
++67195120.0ns
+Command ['/home/akurt/newTryns3/ETED_PDR/changeLppInterval/100ms/ns-3.29/build/scratch/distributed/distributed', '--topology=3'] terminated with signal SIGIOT. Run it under a debugger to get more information (./waf --run <program> --command-template="gdb --args %s <args>").
+4
+Waf: Entering directory `/home/akurt/newTryns3/ETED_PDR/changeLppInterval/100ms/ns-3.29/build'
+Waf: Leaving directory `/home/akurt/newTryns3/ETED_PDR/changeLppInterval/100ms/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (26.541s)
+I am 7 and I claimed to be the closest 
+Found the claimers at 51.3525
+----------------
+{7,88.6397}
+{1,97.2265}
+{10,127.315}
+{6,174.439}
+{2,179.335}
+{4,188.077}
+{8,215.643}
+{5,226.868}
+{3,244.904}
+{9,282.577}
+I am 10 and I got a claim from 7 at 51.3538
+127.315 88.6397
+I am 10 and I claimed to be the closest 
+Found the claimers at 51.4288
+----------------
+{7,88.6397}
+{1,97.2265}
+{10,127.315}
+{6,174.439}
+{2,179.335}
+{4,188.077}
+{8,215.643}
+{5,226.868}
+{3,244.904}
+{9,282.577}
+I am 7 and I got a claim from 10 at 51.4326
+88.6397 127.315
+I (7) will move
+Flow ID: 1 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4873
+Rx Packets = 4873
+Throughput: 0.0581259 Mbps
+0.000905291
++3970302.0ns
+Flow ID: 2 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 3809
+Throughput: 0.04548 Mbps
+0.00310224
++186481917.0ns
+Flow ID: 3 Src Addr 10.1.1.6 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 4827
+Throughput: 0.0576365 Mbps
+0.000761049
++15724234.0ns
+Flow ID: 4 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4862
+Rx Packets = 4761
+Throughput: 0.0569295 Mbps
+-0.0183073
++15159053.0ns
+Flow ID: 5 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4860
+Rx Packets = 4565
+Throughput: 0.0545976 Mbps
+0.00120592
++67527438.0ns
+Command ['/home/akurt/newTryns3/ETED_PDR/changeLppInterval/100ms/ns-3.29/build/scratch/distributed/distributed', '--topology=4'] terminated with signal SIGIOT. Run it under a debugger to get more information (./waf --run <program> --command-template="gdb --args %s <args>").
+5
+Waf: Entering directory `/home/akurt/newTryns3/ETED_PDR/changeLppInterval/100ms/ns-3.29/build'
+Waf: Leaving directory `/home/akurt/newTryns3/ETED_PDR/changeLppInterval/100ms/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (24.362s)
+I am 5 and I claimed to be the closest 
+Found the claimers at 51.4288
+----------------
+{8,158.953}
+{5,174.301}
+{2,191.849}
+{1,204.377}
+{4,207.179}
+{6,208.408}
+{10,225.136}
+{9,237.346}
+{3,263.776}
+{7,299.541}
+Flow ID: 1 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4873
+Rx Packets = 4712
+Throughput: 0.0562053 Mbps
+0.00120589
++36728753.0ns
+Flow ID: 2 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 4668
+Throughput: 0.0557374 Mbps
+0.00171721
++42406985.0ns
+Flow ID: 3 Src Addr 10.1.1.6 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 4867
+Throughput: 0.0581144 Mbps
+0.000300273
++380176.0ns
+Flow ID: 4 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4862
+Rx Packets = 4374
+Throughput: 0.0523019 Mbps
+-0.0182548
++81767906.0ns
+Flow ID: 5 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4860
+Rx Packets = 4806
+Throughput: 0.0574805 Mbps
+0.000300297
++9886318.0ns
+Command ['/home/akurt/newTryns3/ETED_PDR/changeLppInterval/100ms/ns-3.29/build/scratch/distributed/distributed', '--topology=5'] terminated with signal SIGIOT. Run it under a debugger to get more information (./waf --run <program> --command-template="gdb --args %s <args>").
+6
+Waf: Entering directory `/home/akurt/newTryns3/ETED_PDR/changeLppInterval/100ms/ns-3.29/build'
+Waf: Leaving directory `/home/akurt/newTryns3/ETED_PDR/changeLppInterval/100ms/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (24.772s)
+I am 10 and I claimed to be the closest 
+Found the claimers at 51.4036
+----------------
+{10,99.6544}
+{1,106.588}
+{3,148.933}
+{8,167.06}
+{9,195.974}
+{2,201.695}
+{5,209.105}
+{7,222.466}
+{4,269.002}
+{6,302.174}
+Flow ID: 1 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4873
+Rx Packets = 2922
+Throughput: 0.0348533 Mbps
+0.0032822
++190255449.0ns
+Flow ID: 2 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 4324
+Throughput: 0.0516301 Mbps
+0.00134094
++139327973.0ns
+Flow ID: 3 Src Addr 10.1.1.6 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 2977
+Throughput: 0.0357215 Mbps
+-0.487004
++153352732.0ns
+Flow ID: 4 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4862
+Rx Packets = 3368
+Throughput: 0.0402727 Mbps
+-0.0182297
++200635584.0ns
+Flow ID: 5 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4860
+Rx Packets = 4764
+Throughput: 0.056978 Mbps
+0.000571459
++71975562.0ns
+Command ['/home/akurt/newTryns3/ETED_PDR/changeLppInterval/100ms/ns-3.29/build/scratch/distributed/distributed', '--topology=6'] terminated with signal SIGIOT. Run it under a debugger to get more information (./waf --run <program> --command-template="gdb --args %s <args>").
+7
+Waf: Entering directory `/home/akurt/newTryns3/ETED_PDR/changeLppInterval/100ms/ns-3.29/build'
+Waf: Leaving directory `/home/akurt/newTryns3/ETED_PDR/changeLppInterval/100ms/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (1m12.734s)
+I am 10 and I claimed to be the closest 
+Found the claimers at 64.8243
+----------------
+{10,120.851}
+{1,174.909}
+{8,194.201}
+{7,201.827}
+{9,231.864}
+{4,233.439}
+{3,258.256}
+{2,278.806}
+{5,280.817}
+{6,311.466}
+Flow ID: 1 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4873
+Rx Packets = 4168
+Throughput: 0.0497164 Mbps
+0.00118794
++129963310.0ns
+Flow ID: 2 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 3149
+Throughput: 0.0375994 Mbps
+0.00347172
++126866688.0ns
+Flow ID: 3 Src Addr 10.1.1.6 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 2980
+Throughput: 0.0355888 Mbps
+-0.0168683
++156561048.0ns
+Flow ID: 4 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4862
+Rx Packets = 4426
+Throughput: 0.0529134 Mbps
+0.00119693
++170175885.0ns
+Flow ID: 5 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4860
+Rx Packets = 4037
+Throughput: 0.0482819 Mbps
+0.00278321
++189066057.0ns
+Command ['/home/akurt/newTryns3/ETED_PDR/changeLppInterval/100ms/ns-3.29/build/scratch/distributed/distributed', '--topology=7'] terminated with signal SIGIOT. Run it under a debugger to get more information (./waf --run <program> --command-template="gdb --args %s <args>").
+8
+Waf: Entering directory `/home/akurt/newTryns3/ETED_PDR/changeLppInterval/100ms/ns-3.29/build'
+Waf: Leaving directory `/home/akurt/newTryns3/ETED_PDR/changeLppInterval/100ms/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (23.802s)
+I am 10 and I claimed to be the closest 
+Found the claimers at 51.3012
+----------------
+{1,99.6092}
+{8,130.303}
+{5,159.844}
+{6,167.12}
+{10,187.107}
+{3,199.692}
+{9,204.433}
+{2,234.951}
+{4,266.454}
+{7,299.396}
+Flow ID: 1 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4873
+Rx Packets = 4338
+Throughput: 0.0517433 Mbps
+0.00295379
++41936161.0ns
+Flow ID: 2 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 4227
+Throughput: 0.0504718 Mbps
+0.00154789
++51166532.0ns
+Flow ID: 3 Src Addr 10.1.1.6 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 4206
+Throughput: 0.0502214 Mbps
+0.000817101
++59915524.0ns
+Flow ID: 4 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4862
+Rx Packets = 4567
+Throughput: 0.0545995 Mbps
+0.000300327
++32369924.0ns
+Flow ID: 5 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4860
+Rx Packets = 4379
+Throughput: 0.0523727 Mbps
+0.00174535
++48169703.0ns
+Command ['/home/akurt/newTryns3/ETED_PDR/changeLppInterval/100ms/ns-3.29/build/scratch/distributed/distributed', '--topology=8'] terminated with signal SIGIOT. Run it under a debugger to get more information (./waf --run <program> --command-template="gdb --args %s <args>").
+9
+Waf: Entering directory `/home/akurt/newTryns3/ETED_PDR/changeLppInterval/100ms/ns-3.29/build'
+Waf: Leaving directory `/home/akurt/newTryns3/ETED_PDR/changeLppInterval/100ms/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (54.135s)
+I am 5 and I claimed to be the closest 
+Found the claimers at 51.3741
+----------------
+{5,102.903}
+{6,136.81}
+{10,159.179}
+{2,167.836}
+{3,168.778}
+{1,185.529}
+{4,232.521}
+{8,245.742}
+{9,249.377}
+{7,299.181}
+I am 6 and I claimed to be the closest 
+Found the claimers at 51.4036
+----------------
+{5,102.903}
+{6,136.81}
+{10,159.179}
+{2,167.836}
+{3,168.778}
+{1,185.529}
+{4,232.521}
+{8,245.742}
+{9,249.377}
+{7,299.181}
+I am 5 and I got a claim from 6 at 51.4049
+102.903 136.81
+I (5) will move
+Flow ID: 1 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4873
+Rx Packets = 4578
+Throughput: 0.054606 Mbps
+0.00301599
++38198013.0ns
+Flow ID: 2 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 4785
+Throughput: 0.0571338 Mbps
+0.00278637
++36439309.0ns
+Flow ID: 3 Src Addr 10.1.1.6 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 4432
+Throughput: 0.0529301 Mbps
+-0.0182125
++57306936.0ns
+Flow ID: 4 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4862
+Rx Packets = 4493
+Throughput: 0.0537146 Mbps
+0.000739601
++83586305.0ns
+Flow ID: 5 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4860
+Rx Packets = 4675
+Throughput: 0.0559128 Mbps
+0.00179848
++31650105.0ns
+Command ['/home/akurt/newTryns3/ETED_PDR/changeLppInterval/100ms/ns-3.29/build/scratch/distributed/distributed', '--topology=9'] terminated with signal SIGIOT. Run it under a debugger to get more information (./waf --run <program> --command-template="gdb --args %s <args>").
+10
+Waf: Entering directory `/home/akurt/newTryns3/ETED_PDR/changeLppInterval/100ms/ns-3.29/build'
+Waf: Leaving directory `/home/akurt/newTryns3/ETED_PDR/changeLppInterval/100ms/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (57.362s)
+I am 3 and I claimed to be the closest 
+Found the claimers at 51.989
+----------------
+{1,41.0974}
+{8,89.073}
+{7,121.004}
+{3,176.683}
+{5,176.748}
+{10,195.228}
+{4,202.359}
+{2,217.002}
+{9,256.681}
+{6,270.743}
+Flow ID: 1 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4873
+Rx Packets = 4867
+Throughput: 0.0580547 Mbps
+0.000300293
++618116.0ns
+Flow ID: 2 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 4841
+Throughput: 0.0578033 Mbps
+0.00128689
++22707945.0ns
+Flow ID: 3 Src Addr 10.1.1.6 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 4701
+Throughput: 0.0561428 Mbps
+-0.0185449
++98216134.0ns
+Flow ID: 4 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4862
+Rx Packets = 4832
+Throughput: 0.0577674 Mbps
+0.000721616
++5436160.0ns
+Flow ID: 5 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4860
+Rx Packets = 4860
+Throughput: 0.0581263 Mbps
+0.000300297
++387690.0ns
+Command ['/home/akurt/newTryns3/ETED_PDR/changeLppInterval/100ms/ns-3.29/build/scratch/distributed/distributed', '--topology=10'] terminated with signal SIGIOT. Run it under a debugger to get more information (./waf --run <program> --command-template="gdb --args %s <args>").

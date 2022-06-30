@@ -1,0 +1,1781 @@
+./waf --run distributed --topology=2 --movingNode=30
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (4.223s)
+I am 30 and I claimed to be the closest 
+Found the claimers at 50.7557
+----------------
+{22,70.3207}
+{2,108.858}
+{3,113.195}
+{1,122.56}
+{10,125.096}
+{9,134.907}
+{5,140.032}
+{24,148.307}
+{18,150.296}
+{28,182.313}
+{8,187.832}
+{17,192.44}
+{21,194.682}
+{4,198.739}
+{26,198.904}
+{6,207.694}
+{7,209.127}
+{29,217.665}
+{25,224.323}
+{30,229.015}
+{16,235.221}
+{23,242.951}
+{14,243.879}
+{11,249.582}
+{15,251.825}
+{19,257.645}
+{20,280.606}
+{27,281.548}
+{13,287.6}
+{12,295.129}
+now moving node 30 to the new location
+it will take 15.2677 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4874
+Rx Packets = 4754
+Throughput: 0.0566947 Mbps
+0.00122386
++10010401.0ns
+Flow ID: 2 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4864
+Rx Packets = 4553
+Throughput: 0.0544196 Mbps
+-0.0177492
++15201895.0ns
+Flow ID: 3 Src Addr 10.1.1.30 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 4075
+Throughput: 0.0487467 Mbps
+0.00216792
++59423218.0ns
+Flow ID: 4 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 4535
+Throughput: 0.054249 Mbps
+0.00287848
++12816757.0ns
+Flow ID: 5 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4858
+Rx Packets = 4430
+Throughput: 0.0530039 Mbps
+0.00282449
++19131646.0ns
+Command ['/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build/scratch/distributed/distributed', '--topology=2', '--movingNode=30'] terminated with signal SIGIOT. Run it under a debugger to get more information (./waf --run <program> --command-template="gdb --args %s <args>").
+./waf --run distributed --topology=3 --movingNode=23
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (4.226s)
+I am 26 and I claimed to be the closest 
+Found the claimers at 50.6311
+----------------
+{23,73.1163}
+{26,113.89}
+{5,128.394}
+{3,137.55}
+{10,145}
+{19,151.37}
+{21,151.446}
+{1,155.006}
+{17,157.051}
+{15,157.509}
+{16,170.675}
+{30,181.995}
+{4,188.971}
+{24,196.723}
+{9,200.082}
+{28,201.542}
+{6,209.428}
+{7,219.349}
+{12,221.795}
+{22,222.263}
+{11,225.739}
+{18,226.351}
+{2,227.337}
+{8,231.322}
+{27,232.14}
+{14,267.875}
+{20,274.674}
+{13,277.283}
+{25,281.998}
+{29,285.098}
+I am 23 and I got a claim from 26 at 50.632
+73.1163 113.89
+I (23) will move
+I am 23 and I claimed to be the closest 
+Found the claimers at 50.9907
+----------------
+{23,73.1163}
+{26,113.89}
+{5,128.394}
+{3,137.55}
+{10,145}
+{19,151.37}
+{21,151.446}
+{1,155.006}
+{17,157.051}
+{15,157.509}
+{16,170.675}
+{30,181.995}
+{4,188.971}
+{24,196.723}
+{9,200.082}
+{28,201.542}
+{6,209.428}
+{7,219.349}
+{12,221.795}
+{22,222.263}
+{11,225.739}
+{18,226.351}
+{2,227.337}
+{8,231.322}
+{27,232.14}
+{14,267.875}
+{20,274.674}
+{13,277.283}
+{25,281.998}
+{29,285.098}
+now moving node 23 to the new location
+it will take 4.87442 seconds to move the node to the new location
+I am 26 and I got a claim from 23 at 50.9921
+113.89 73.1163
+I am 30 and I claimed to be the closest 
+Found the claimers at 51.3562
+----------------
+{23,73.1163}
+{26,113.89}
+{5,128.394}
+{3,137.55}
+{10,145}
+{19,151.37}
+{21,151.446}
+{1,155.006}
+{17,157.051}
+{15,157.509}
+{16,170.675}
+{30,181.995}
+{4,188.971}
+{24,196.723}
+{9,200.082}
+{28,201.542}
+{6,209.428}
+{7,219.349}
+{12,221.795}
+{22,222.263}
+{11,225.739}
+{18,226.351}
+{2,227.337}
+{8,231.322}
+{27,232.14}
+{14,267.875}
+{20,274.674}
+{13,277.283}
+{25,281.998}
+{29,285.098}
+I am 23 and I got a claim from 30 at 51.358
+67.6079 181.995
+I (23) will move
+I am 26 and I got a claim from 30 at 51.3593
+113.89 181.995
+I am 26 and I got a claim from 30 at 51.3598
+113.89 181.995
+I am 19 and I claimed to be the closest 
+Found the claimers at 51.9197
+----------------
+{23,73.1163}
+{26,113.89}
+{5,128.394}
+{3,137.55}
+{10,145}
+{19,151.37}
+{21,151.446}
+{1,155.006}
+{17,157.051}
+{15,157.509}
+{16,170.675}
+{30,181.995}
+{4,188.971}
+{24,196.723}
+{9,200.082}
+{28,201.542}
+{6,209.428}
+{7,219.349}
+{12,221.795}
+{22,222.263}
+{11,225.739}
+{18,226.351}
+{2,227.337}
+{8,231.322}
+{27,232.14}
+{14,267.875}
+{20,274.674}
+{13,277.283}
+{25,281.998}
+{29,285.098}
+I am 23 and I got a claim from 19 at 51.9259
+59.0889 151.37
+I (23) will move
+I am 30 and I got a claim from 19 at 51.9265
+181.995 151.37
+I am 26 and I got a claim from 19 at 51.9266
+113.89 151.37
+I am 26 and I got a claim from 19 at 51.9268
+113.89 151.37
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4874
+Rx Packets = 4805
+Throughput: 0.0573029 Mbps
+0.00121491
++36843648.0ns
+Flow ID: 2 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4864
+Rx Packets = 4755
+Throughput: 0.0568343 Mbps
+-0.0182019
++36477576.0ns
+Flow ID: 3 Src Addr 10.1.1.23 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 1512
+Throughput: 0.037438 Mbps
+-51.4241
++30625836.0ns
+Flow ID: 4 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 4844
+Throughput: 0.0579469 Mbps
+0.000300288
++7805453.0ns
+Flow ID: 5 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4858
+Rx Packets = 4711
+Throughput: 0.0563666 Mbps
+0.00186117
++52568811.0ns
+Command ['/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build/scratch/distributed/distributed', '--topology=3', '--movingNode=23'] terminated with signal SIGIOT. Run it under a debugger to get more information (./waf --run <program> --command-template="gdb --args %s <args>").
+./waf --run distributed --topology=6 --movingNode=25
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (4.098s)
+I am 25 and I claimed to be the closest 
+Found the claimers at 50.3502
+----------------
+{25,70.4911}
+{1,101.951}
+{12,116.709}
+{2,131.233}
+{30,131.837}
+{5,134.048}
+{18,152.673}
+{28,156.115}
+{24,162.831}
+{9,168.348}
+{13,171.878}
+{3,176.085}
+{14,181.951}
+{6,189.955}
+{21,195.164}
+{4,203.517}
+{23,212.139}
+{22,219.839}
+{11,221.28}
+{10,227.978}
+{29,237.508}
+{15,242.516}
+{8,243.756}
+{26,252.891}
+{27,253.602}
+{20,257.358}
+{17,258.174}
+{7,266.011}
+{16,293.402}
+{19,309.705}
+now moving node 25 to the new location
+it will take 4.69941 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4874
+Rx Packets = 4568
+Throughput: 0.0544862 Mbps
+-0.0165129
++8360181.0ns
+Flow ID: 2 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4864
+Rx Packets = 4846
+Throughput: 0.0579224 Mbps
+-0.0189525
++9053539.0ns
+Flow ID: 3 Src Addr 10.1.1.25 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 4122
+Throughput: 0.0496717 Mbps
+-0.72448
++70683463.0ns
+Flow ID: 4 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 4577
+Throughput: 0.0547513 Mbps
+0.00320131
++14087286.0ns
+Flow ID: 5 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4858
+Rx Packets = 4585
+Throughput: 0.0548583 Mbps
+0.00309064
++4548718.0ns
+Command ['/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build/scratch/distributed/distributed', '--topology=6', '--movingNode=25'] terminated with signal SIGIOT. Run it under a debugger to get more information (./waf --run <program> --command-template="gdb --args %s <args>").
+./waf --run distributed --topology=7 --movingNode=23
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (4.096s)
+I am 23 and I claimed to be the closest 
+Found the claimers at 50.6909
+----------------
+{18,87.8521}
+{27,97.4269}
+{29,113.93}
+{17,125.638}
+{23,133.679}
+{4,147.122}
+{16,155.035}
+{19,161.744}
+{12,165.702}
+{24,173.384}
+{3,184.209}
+{9,190.916}
+{6,191.139}
+{5,191.353}
+{1,200.744}
+{7,211.615}
+{2,214.283}
+{8,218.845}
+{30,222.83}
+{14,227.748}
+{15,228.298}
+{10,244.61}
+{13,247.008}
+{25,251.885}
+{21,256.418}
+{26,280.859}
+{11,287.852}
+{22,297.945}
+{20,310.475}
+{28,322.45}
+now moving node 23 to the new location
+it will take 8.91191 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4874
+Rx Packets = 3434
+Throughput: 0.0411597 Mbps
+-0.500518
++71014229.0ns
+Flow ID: 2 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4864
+Rx Packets = 3408
+Throughput: 0.0409325 Mbps
+-0.500645
++78563893.0ns
+Flow ID: 3 Src Addr 10.1.1.23 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 2858
+Throughput: 0.0348494 Mbps
+-1.8848
++127534808.0ns
+Flow ID: 4 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 4301
+Throughput: 0.0514692 Mbps
+-0.0344748
++29322941.0ns
+Flow ID: 5 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4858
+Rx Packets = 3251
+Throughput: 0.0390932 Mbps
+-0.495352
++62285818.0ns
+Command ['/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build/scratch/distributed/distributed', '--topology=7', '--movingNode=23'] terminated with signal SIGIOT. Run it under a debugger to get more information (./waf --run <program> --command-template="gdb --args %s <args>").
+./waf --run distributed --topology=9 --movingNode=29
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (3.991s)
+I am 29 and I claimed to be the closest 
+Found the claimers at 50.7139
+----------------
+{29,67.6092}
+{6,100.31}
+{2,106.442}
+{18,126.61}
+{16,127.949}
+{12,137.67}
+{3,144.796}
+{11,155.952}
+{20,156.528}
+{8,180.931}
+{4,184.48}
+{17,191.648}
+{1,192.252}
+{30,209.497}
+{13,211.201}
+{27,214.135}
+{28,215.318}
+{22,215.439}
+{5,222.497}
+{14,224.88}
+{10,224.947}
+{7,231.299}
+{21,244.438}
+{9,248.105}
+{23,250.298}
+{15,253.369}
+{19,271.166}
+{24,274.095}
+{25,274.17}
+{26,311.965}
+now moving node 29 to the new location
+it will take 4.50728 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4874
+Rx Packets = 4567
+Throughput: 0.0544643 Mbps
+0.00172616
++70433448.0ns
+Flow ID: 2 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4864
+Rx Packets = 4700
+Throughput: 0.0561773 Mbps
+-0.0189323
++26960805.0ns
+Flow ID: 3 Src Addr 10.1.1.29 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 2321
+Throughput: 0.0279492 Mbps
+-0.654583
++110063715.0ns
+Flow ID: 4 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 4604
+Throughput: 0.0550753 Mbps
+0.00125988
++36724896.0ns
+Flow ID: 5 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4858
+Rx Packets = 2853
+Throughput: 0.0343666 Mbps
+-0.666159
++133411910.0ns
+Command ['/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build/scratch/distributed/distributed', '--topology=9', '--movingNode=29'] terminated with signal SIGIOT. Run it under a debugger to get more information (./waf --run <program> --command-template="gdb --args %s <args>").
+./waf --run distributed --topology=10 --movingNode=22
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (4.067s)
+I am 22 and I claimed to be the closest 
+Found the claimers at 51.3368
+----------------
+{14,101.764}
+{15,102.22}
+{11,103.489}
+{23,121.05}
+{22,131.217}
+{20,143.259}
+{28,148.63}
+{18,168.125}
+{13,171.193}
+{1,178.407}
+{10,194.147}
+{12,197.803}
+{3,198.356}
+{16,214.758}
+{9,216.852}
+{19,218.048}
+{29,218.486}
+{6,219.85}
+{5,238.216}
+{25,238.304}
+{4,242.59}
+{21,244.665}
+{26,247.518}
+{2,259.588}
+{7,261.132}
+{8,285.85}
+{17,289.185}
+{27,294.873}
+{30,303.424}
+{24,311.662}
+now moving node 22 to the new location
+it will take 8.74783 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4874
+Rx Packets = 3002
+Throughput: 0.0361028 Mbps
+-0.833441
++70789045.0ns
+Flow ID: 2 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4864
+Rx Packets = 2419
+Throughput: 0.0291468 Mbps
+-0.816501
++119893721.0ns
+Flow ID: 3 Src Addr 10.1.1.22 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 949
+Throughput: 0.0118429 Mbps
+-4.11953
++72662797.0ns
+Flow ID: 4 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 3015
+Throughput: 0.036082 Mbps
+-0.0402291
++93669526.0ns
+Flow ID: 5 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4858
+Rx Packets = 2783
+Throughput: 0.0335791 Mbps
+-0.82999
++76566845.0ns
+Command ['/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build/scratch/distributed/distributed', '--topology=10', '--movingNode=22'] terminated with signal SIGIOT. Run it under a debugger to get more information (./waf --run <program> --command-template="gdb --args %s <args>").
+./waf --run distributed --topology=11 --movingNode=20
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (4.045s)
+I am 20 and I claimed to be the closest 
+Found the claimers at 50.9817
+----------------
+{20,46.2817}
+{13,102.426}
+{9,116.623}
+{11,143.475}
+{17,143.788}
+{2,146.578}
+{1,149.134}
+{19,157.889}
+{14,159.784}
+{3,181.243}
+{4,184.808}
+{23,185.545}
+{12,186.199}
+{29,196.235}
+{25,201.375}
+{16,210.44}
+{15,215.511}
+{10,216.248}
+{8,229.401}
+{5,237.095}
+{18,239.637}
+{22,256.78}
+{7,258.039}
+{21,258.337}
+{30,274.489}
+{26,287.146}
+{6,297.505}
+{27,303.914}
+{28,309.563}
+{24,326.11}
+now moving node 20 to the new location
+it will take 3.08545 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4874
+Rx Packets = 4494
+Throughput: 0.053594 Mbps
+0.00126895
++75245446.0ns
+Flow ID: 2 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4864
+Rx Packets = 4005
+Throughput: 0.047869 Mbps
+-0.0164711
++100242994.0ns
+Flow ID: 3 Src Addr 10.1.1.20 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 1787
+Throughput: 0.0214064 Mbps
+-0.135556
++76212152.0ns
+Flow ID: 4 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 4582
+Throughput: 0.0548124 Mbps
+0.00081163
++59004346.0ns
+Flow ID: 5 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4858
+Rx Packets = 3886
+Throughput: 0.046495 Mbps
+0.00311082
++60856528.0ns
+Command ['/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build/scratch/distributed/distributed', '--topology=11', '--movingNode=20'] terminated with signal SIGIOT. Run it under a debugger to get more information (./waf --run <program> --command-template="gdb --args %s <args>").
+./waf --run distributed --topology=12 --movingNode=13
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (4.039s)
+I am 5 and I claimed to be the closest 
+Found the claimers at 50.9645
+----------------
+{12,102.039}
+{18,103.325}
+{13,112.116}
+{30,114.599}
+{24,147.058}
+{11,147.16}
+{1,149.887}
+{5,162.413}
+{16,174.003}
+{7,187.013}
+{21,188.43}
+{2,189.172}
+{4,191.536}
+{27,195.435}
+{15,203.335}
+{3,207.367}
+{19,224.161}
+{23,224.824}
+{20,230.569}
+{26,237.051}
+{17,242.107}
+{29,245.016}
+{22,249.972}
+{14,265.688}
+{8,267.178}
+{25,273.748}
+{9,285.808}
+{10,287.057}
+{6,287.315}
+{28,301.324}
+I am 24 and I got a claim from 5 at 50.9688
+147.058 162.413
+I (24) will move
+I am 13 and I claimed to be the closest 
+Found the claimers at 51.0931
+----------------
+{12,102.039}
+{18,103.325}
+{13,112.116}
+{30,114.599}
+{24,147.058}
+{11,147.16}
+{1,149.887}
+{5,162.413}
+{16,174.003}
+{7,187.013}
+{21,188.43}
+{2,189.172}
+{4,191.536}
+{27,195.435}
+{15,203.335}
+{3,207.367}
+{19,224.161}
+{23,224.824}
+{20,230.569}
+{26,237.051}
+{17,242.107}
+{29,245.016}
+{22,249.972}
+{14,265.688}
+{8,267.178}
+{25,273.748}
+{9,285.808}
+{10,287.057}
+{6,287.315}
+{28,301.324}
+now moving node 13 to the new location
+it will take 7.4744 seconds to move the node to the new location
+I am 5 and I got a claim from 13 at 51.0956
+162.413 112.116
+I am 5 and I got a claim from 13 at 51.096
+162.413 112.116
+I am 24 and I claimed to be the closest 
+Found the claimers at 51.457
+----------------
+{12,102.039}
+{18,103.325}
+{13,112.116}
+{30,114.599}
+{24,147.058}
+{11,147.16}
+{1,149.887}
+{5,162.413}
+{16,174.003}
+{7,187.013}
+{21,188.43}
+{2,189.172}
+{4,191.536}
+{27,195.435}
+{15,203.335}
+{3,207.367}
+{19,224.161}
+{23,224.824}
+{20,230.569}
+{26,237.051}
+{17,242.107}
+{29,245.016}
+{22,249.972}
+{14,265.688}
+{8,267.178}
+{25,273.748}
+{9,285.808}
+{10,287.057}
+{6,287.315}
+{28,301.324}
+I am 5 and I got a claim from 24 at 51.4601
+162.413 147.058
+I am 5 and I got a claim from 24 at 51.4627
+162.413 147.058
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4874
+Rx Packets = 4404
+Throughput: 0.0525285 Mbps
+-0.0136974
++17106879.0ns
+Flow ID: 2 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4864
+Rx Packets = 4294
+Throughput: 0.0513219 Mbps
+-0.0138161
++40765976.0ns
+Flow ID: 3 Src Addr 10.1.1.13 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 2587
+Throughput: 0.0312342 Mbps
+-0.913615
++93095086.0ns
+Flow ID: 4 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 4404
+Throughput: 0.0526816 Mbps
+0.00349882
++14039164.0ns
+Flow ID: 5 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4858
+Rx Packets = 4336
+Throughput: 0.0518789 Mbps
+0.00347435
++18501666.0ns
+Command ['/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build/scratch/distributed/distributed', '--topology=12', '--movingNode=13'] terminated with signal SIGIOT. Run it under a debugger to get more information (./waf --run <program> --command-template="gdb --args %s <args>").
+./waf --run distributed --topology=13 --movingNode=7
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (4.065s)
+I am 7 and I claimed to be the closest 
+Found the claimers at 51.4036
+----------------
+{13,76.0855}
+{7,105.934}
+{1,126.621}
+{15,126.689}
+{4,127.157}
+{11,137.029}
+{3,156.952}
+{2,161.558}
+{12,165.306}
+{17,166.67}
+{14,169.204}
+{19,172.905}
+{30,177.429}
+{24,191.481}
+{29,193.93}
+{21,207.058}
+{8,234.806}
+{18,235.104}
+{5,238.346}
+{25,238.382}
+{27,243.491}
+{10,246.743}
+{20,254.049}
+{16,258.492}
+{28,264.35}
+{23,268.513}
+{26,268.522}
+{22,297.136}
+{6,305.213}
+{9,318.793}
+now moving node 7 to the new location
+it will take 7.06226 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4874
+Rx Packets = 3980
+Throughput: 0.0474828 Mbps
+-0.0378742
++93517106.0ns
+Flow ID: 2 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4864
+Rx Packets = 3636
+Throughput: 0.0434678 Mbps
+-0.0375207
++110135297.0ns
+Flow ID: 3 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 4027
+Throughput: 0.048183 Mbps
+-0.0195685
++55987005.0ns
+Flow ID: 4 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 4012
+Throughput: 0.0480032 Mbps
+-0.0188403
++55390189.0ns
+Flow ID: 5 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4858
+Rx Packets = 0
+Throughput: -0 Mbps
+-102.991
++0.0ns
+Command ['/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build/scratch/distributed/distributed', '--topology=13', '--movingNode=7'] terminated with signal SIGIOT. Run it under a debugger to get more information (./waf --run <program> --command-template="gdb --args %s <args>").
+./waf --run distributed --topology=14 --movingNode=24
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (4.018s)
+I am 24 and I claimed to be the closest 
+Found the claimers at 51.425
+----------------
+{24,85.1998}
+{12,102.426}
+{7,112.592}
+{17,124.246}
+{6,169.688}
+{2,170.191}
+{9,174.831}
+{11,176.151}
+{26,187.875}
+{3,193.709}
+{8,198.701}
+{10,202.116}
+{30,204.778}
+{1,205.127}
+{14,209.17}
+{13,214.415}
+{15,217.244}
+{19,234.444}
+{16,234.576}
+{27,244.82}
+{4,252.274}
+{23,255.721}
+{25,257.455}
+{29,258.089}
+{5,264.401}
+{22,268.486}
+{20,270.426}
+{18,278.047}
+{28,278.84}
+{21,296.976}
+now moving node 24 to the new location
+it will take 5.67998 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4874
+Rx Packets = 2642
+Throughput: 0.0315138 Mbps
+-0.0183594
++113649999.0ns
+Flow ID: 2 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4864
+Rx Packets = 3511
+Throughput: 0.0419643 Mbps
+-0.0156477
++95722874.0ns
+Flow ID: 3 Src Addr 10.1.1.24 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 0
+Throughput: -0 Mbps
+-102.984
++0.0ns
+Flow ID: 4 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 3969
+Throughput: 0.0474792 Mbps
+0.00114664
++110142958.0ns
+Flow ID: 5 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4858
+Rx Packets = 2837
+Throughput: 0.033944 Mbps
+0.00294885
++98032512.0ns
+Command ['/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build/scratch/distributed/distributed', '--topology=14', '--movingNode=24'] terminated with signal SIGIOT. Run it under a debugger to get more information (./waf --run <program> --command-template="gdb --args %s <args>").
+./waf --run distributed --topology=17 --movingNode=29
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (4.044s)
+I am 29 and I claimed to be the closest 
+Found the claimers at 51.8709
+----------------
+{14,69.455}
+{16,101.558}
+{22,107.341}
+{17,117.329}
+{13,118.41}
+{28,122.756}
+{21,127.472}
+{15,146.769}
+{23,150.579}
+{19,151.687}
+{1,189.293}
+{26,189.66}
+{20,191.107}
+{9,191.927}
+{18,196.85}
+{25,204.13}
+{11,206.819}
+{6,209.354}
+{29,222.041}
+{2,232.676}
+{5,240.589}
+{10,247.443}
+{24,251.637}
+{30,251.802}
+{3,252.519}
+{4,260.206}
+{7,260.908}
+{12,264.736}
+{27,269.948}
+{8,326.467}
+now moving node 29 to the new location
+it will take 14.8027 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4874
+Rx Packets = 4497
+Throughput: 0.0536395 Mbps
+-0.0168153
++11653603.0ns
+Flow ID: 2 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4864
+Rx Packets = 0
+Throughput: -0 Mbps
+-102.999
++0.0ns
+Flow ID: 3 Src Addr 10.1.1.29 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 4069
+Throughput: 0.0498548 Mbps
+-2.35246
++85964686.0ns
+Flow ID: 4 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 4421
+Throughput: 0.052884 Mbps
+0.005385
++39591186.0ns
+Flow ID: 5 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4858
+Rx Packets = 4834
+Throughput: 0.0578392 Mbps
+0.000300284
++941984.0ns
+Command ['/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build/scratch/distributed/distributed', '--topology=17', '--movingNode=29'] terminated with signal SIGIOT. Run it under a debugger to get more information (./waf --run <program> --command-template="gdb --args %s <args>").
+./waf --run distributed --topology=18 --movingNode=12
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (4.083s)
+I am 12 and I claimed to be the closest 
+Found the claimers at 51.455
+----------------
+{1,98.8585}
+{12,117.316}
+{5,117.953}
+{3,128.133}
+{11,131.564}
+{14,155.084}
+{9,156.362}
+{8,159.534}
+{19,167.598}
+{2,188.746}
+{23,197.752}
+{15,199.755}
+{7,200.654}
+{10,210.554}
+{30,219.21}
+{18,220.322}
+{26,224.706}
+{29,225.426}
+{27,228.668}
+{20,232.065}
+{22,233.094}
+{13,233.452}
+{16,240.861}
+{21,254.468}
+{4,265.16}
+{28,273.651}
+{17,273.953}
+{6,284.975}
+{24,294.927}
+{25,306.042}
+now moving node 12 to the new location
+it will take 7.82105 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4874
+Rx Packets = 4817
+Throughput: 0.057446 Mbps
+0.00115185
++2534864.0ns
+Flow ID: 2 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4864
+Rx Packets = 4819
+Throughput: 0.0575881 Mbps
+0.00104224
++2786796.0ns
+Flow ID: 3 Src Addr 10.1.1.12 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 4778
+Throughput: 0.0571568 Mbps
+0.00119006
++101219500.0ns
+Flow ID: 4 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 4811
+Throughput: 0.0575513 Mbps
+0.00172085
++5047288.0ns
+Flow ID: 5 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4858
+Rx Packets = 4813
+Throughput: 0.0575879 Mbps
+0.000300272
++675915.0ns
+Command ['/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build/scratch/distributed/distributed', '--topology=18', '--movingNode=12'] terminated with signal SIGIOT. Run it under a debugger to get more information (./waf --run <program> --command-template="gdb --args %s <args>").
+./waf --run distributed --topology=19 --movingNode=24
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (4.077s)
+I am 24 and I claimed to be the closest 
+Found the claimers at 50.674
+----------------
+{25,90.2053}
+{16,90.7469}
+{11,119.336}
+{8,125.813}
+{1,136.536}
+{24,156.093}
+{3,170.628}
+{7,172.337}
+{6,185.356}
+{23,189.235}
+{19,198.167}
+{5,198.799}
+{13,202.064}
+{22,206.7}
+{29,207.812}
+{9,216.643}
+{27,221.926}
+{28,222.016}
+{30,231.26}
+{14,243.793}
+{4,244.233}
+{2,245.994}
+{18,250.978}
+{20,258.544}
+{17,258.815}
+{10,262.72}
+{21,264.554}
+{26,267.324}
+{15,269.149}
+{12,271.328}
+now moving node 24 to the new location
+it will take 10.4062 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4874
+Rx Packets = 3828
+Throughput: 0.0456587 Mbps
+-0.0145386
++60556527.0ns
+Flow ID: 2 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4864
+Rx Packets = 4418
+Throughput: 0.0527963 Mbps
+0.00070363
++59006808.0ns
+Flow ID: 3 Src Addr 10.1.1.24 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 3155
+Throughput: 0.0377417 Mbps
+0.00122214
++73619289.0ns
+Flow ID: 4 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 3381
+Throughput: 0.040444 Mbps
+0.0042947
++66103409.0ns
+Flow ID: 5 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4858
+Rx Packets = 0
+Throughput: -0 Mbps
+-102.991
++0.0ns
+Command ['/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build/scratch/distributed/distributed', '--topology=19', '--movingNode=24'] terminated with signal SIGIOT. Run it under a debugger to get more information (./waf --run <program> --command-template="gdb --args %s <args>").
+./waf --run distributed --topology=20 --movingNode=15
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (3.958s)
+I am 15 and I claimed to be the closest 
+Found the claimers at 51.3701
+----------------
+{15,87.7382}
+{9,93.8563}
+{22,120.433}
+{29,138.888}
+{11,140.407}
+{12,143.698}
+{14,150.077}
+{13,153.235}
+{26,158.663}
+{4,174.336}
+{18,176.808}
+{20,180.912}
+{16,184.437}
+{17,201.283}
+{1,202.049}
+{7,207.678}
+{21,216.64}
+{19,219.082}
+{2,226.722}
+{23,238.776}
+{10,239.138}
+{5,248.397}
+{8,249.163}
+{25,252.319}
+{28,261.199}
+{30,264.29}
+{24,268.734}
+{6,271.494}
+{3,295.868}
+{27,315.565}
+now moving node 15 to the new location
+it will take 5.84922 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4874
+Rx Packets = 4369
+Throughput: 0.0522345 Mbps
+-0.249409
++71485502.0ns
+Flow ID: 2 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4864
+Rx Packets = 1622
+Throughput: 0.0194872 Mbps
+-0.53039
++152690010.0ns
+Flow ID: 3 Src Addr 10.1.1.15 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 3886
+Throughput: 0.04695 Mbps
+-0.981386
++124876961.0ns
+Flow ID: 4 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 4340
+Throughput: 0.0520408 Mbps
+-0.23494
++38857776.0ns
+Flow ID: 5 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4858
+Rx Packets = 4000
+Throughput: 0.047978 Mbps
+-0.243804
++69909210.0ns
+Command ['/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build/scratch/distributed/distributed', '--topology=20', '--movingNode=15'] terminated with signal SIGIOT. Run it under a debugger to get more information (./waf --run <program> --command-template="gdb --args %s <args>").
+./waf --run distributed --topology=21 --movingNode=14
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (3.953s)
+I am 14 and I claimed to be the closest 
+Found the claimers at 52.505
+----------------
+{14,84.8116}
+{8,107.308}
+{5,128.604}
+{3,130.729}
+{10,130.733}
+{4,132.348}
+{19,142.65}
+{7,155.583}
+{2,162.681}
+{20,162.681}
+{6,165.635}
+{12,169.393}
+{9,184.377}
+{15,184.876}
+{26,184.881}
+{18,185.898}
+{17,211.291}
+{1,218.744}
+{25,219.294}
+{13,221.793}
+{21,227.24}
+{30,229.965}
+{23,233.086}
+{27,233.446}
+{29,236.865}
+{11,255.063}
+{28,258.654}
+{22,261.216}
+{24,275.788}
+{16,295.909}
+now moving node 14 to the new location
+it will take 5.6541 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4874
+Rx Packets = 4640
+Throughput: 0.0553349 Mbps
+0.00163418
++23834812.0ns
+Flow ID: 2 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4864
+Rx Packets = 4762
+Throughput: 0.056918 Mbps
+-0.0183215
++14473654.0ns
+Flow ID: 3 Src Addr 10.1.1.14 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 1970
+Throughput: 0.0454612 Mbps
+-47.9167
++69201571.0ns
+Flow ID: 4 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 4850
+Throughput: 0.0580187 Mbps
+0.000208269
++9099162.0ns
+Flow ID: 5 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4858
+Rx Packets = 4592
+Throughput: 0.0552144 Mbps
+-0.487459
++39217645.0ns
+Command ['/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build/scratch/distributed/distributed', '--topology=21', '--movingNode=14'] terminated with signal SIGIOT. Run it under a debugger to get more information (./waf --run <program> --command-template="gdb --args %s <args>").
+./waf --run distributed --topology=22 --movingNode=17
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (3.977s)
+I am 17 and I claimed to be the closest 
+Found the claimers at 51.5188
+----------------
+{17,67.72}
+{11,96.0729}
+{8,97.1648}
+{21,120.179}
+{23,120.569}
+{10,148.206}
+{30,151.423}
+{9,158.326}
+{29,162.142}
+{22,163.132}
+{24,170.041}
+{1,173.162}
+{12,175.719}
+{27,177.217}
+{6,183.995}
+{7,201.626}
+{28,216.825}
+{25,217.239}
+{13,224.156}
+{18,231.534}
+{16,248.598}
+{4,249.056}
+{15,249.74}
+{19,255.257}
+{26,264.668}
+{5,267.037}
+{2,273.037}
+{3,273.737}
+{20,289.055}
+{14,306.348}
+now moving node 17 to the new location
+it will take 4.51467 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4874
+Rx Packets = 4472
+Throughput: 0.0533417 Mbps
+-0.0177232
++9198393.0ns
+Flow ID: 2 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4864
+Rx Packets = 4853
+Throughput: 0.0579948 Mbps
+0.000370871
++1557700.0ns
+Flow ID: 3 Src Addr 10.1.1.17 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 4675
+Throughput: 0.0559247 Mbps
+0.00120264
++58804855.0ns
+Flow ID: 4 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 4456
+Throughput: 0.0535467 Mbps
+-0.448125
++11467038.0ns
+Flow ID: 5 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4858
+Rx Packets = 4852
+Throughput: 0.0580543 Mbps
+0.000712594
++1363592.0ns
+Command ['/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build/scratch/distributed/distributed', '--topology=22', '--movingNode=17'] terminated with signal SIGIOT. Run it under a debugger to get more information (./waf --run <program> --command-template="gdb --args %s <args>").
+./waf --run distributed --topology=23 --movingNode=27
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (3.924s)
+I am 27 and I claimed to be the closest 
+Found the claimers at 51.3579
+----------------
+{14,101.405}
+{28,104.192}
+{6,107.322}
+{30,122.515}
+{25,135.61}
+{4,140.018}
+{27,143.614}
+{20,149.419}
+{5,172.644}
+{13,177.82}
+{22,179.338}
+{19,186.711}
+{8,190.037}
+{15,190.415}
+{11,199.575}
+{2,200.905}
+{1,204.316}
+{29,222.018}
+{7,225.253}
+{23,229.22}
+{10,241.135}
+{3,252.002}
+{17,256.986}
+{16,263.566}
+{18,268.159}
+{21,273.542}
+{12,277.411}
+{9,285.997}
+{24,295.679}
+{26,334.822}
+now moving node 27 to the new location
+it will take 9.57427 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4874
+Rx Packets = 4081
+Throughput: 0.0488588 Mbps
+-0.387024
++62355458.0ns
+Flow ID: 2 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4864
+Rx Packets = 3961
+Throughput: 0.0475295 Mbps
+-0.406969
++129500014.0ns
+Flow ID: 3 Src Addr 10.1.1.27 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 1041
+Throughput: 0.0125485 Mbps
+-0.756161
++55032484.0ns
+Flow ID: 4 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 4149
+Throughput: 0.0498273 Mbps
+-0.387842
++80623374.0ns
+Flow ID: 5 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4858
+Rx Packets = 4104
+Throughput: 0.0492967 Mbps
+-0.387123
++64015989.0ns
+Command ['/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build/scratch/distributed/distributed', '--topology=23', '--movingNode=27'] terminated with signal SIGIOT. Run it under a debugger to get more information (./waf --run <program> --command-template="gdb --args %s <args>").
+./waf --run distributed --topology=24 --movingNode=14
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (4.033s)
+I am 14 and I claimed to be the closest 
+Found the claimers at 50.8589
+----------------
+{28,68.3008}
+{9,106.799}
+{15,112.004}
+{25,118.195}
+{23,139.735}
+{26,156.042}
+{1,157.22}
+{20,158.31}
+{2,166.703}
+{14,174.221}
+{3,182.932}
+{5,184.299}
+{19,186.574}
+{8,187.283}
+{10,196.329}
+{7,197.901}
+{30,217.168}
+{13,220.864}
+{17,230.751}
+{21,232.719}
+{4,234.489}
+{6,242.281}
+{12,246.923}
+{22,249.02}
+{27,264.163}
+{11,264.624}
+{18,277.75}
+{16,284.213}
+{24,312.97}
+{29,325.692}
+now moving node 14 to the new location
+it will take 11.6147 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4874
+Rx Packets = 3670
+Throughput: 0.0437752 Mbps
+-0.0170002
++118351368.0ns
+Flow ID: 2 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4864
+Rx Packets = 4787
+Throughput: 0.0572061 Mbps
+0.000300318
++57920062.0ns
+Flow ID: 3 Src Addr 10.1.1.14 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 3138
+Throughput: 0.0375375 Mbps
+0.0033171
++140337822.0ns
+Flow ID: 4 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 4774
+Throughput: 0.0571092 Mbps
+0.000829606
++69676327.0ns
+Flow ID: 5 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4858
+Rx Packets = 3361
+Throughput: 0.0403809 Mbps
+-0.409227
++152294086.0ns
+Command ['/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build/scratch/distributed/distributed', '--topology=24', '--movingNode=14'] terminated with signal SIGIOT. Run it under a debugger to get more information (./waf --run <program> --command-template="gdb --args %s <args>").
+./waf --run distributed --topology=26 --movingNode=29
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (3.951s)
+I am 29 and I claimed to be the closest 
+Found the claimers at 51.1178
+----------------
+{29,44.8219}
+{7,133.929}
+{1,138.34}
+{22,139.144}
+{8,140.602}
+{30,145.128}
+{19,152.141}
+{20,155.271}
+{6,181.086}
+{23,189.589}
+{18,196.586}
+{27,196.942}
+{3,197.403}
+{21,200.322}
+{9,216.215}
+{12,219.03}
+{5,222.823}
+{28,224.234}
+{2,225.284}
+{4,233.499}
+{25,250.186}
+{26,253.839}
+{11,259.156}
+{17,261.545}
+{16,263.956}
+{24,266.28}
+{14,269.9}
+{13,280.601}
+{10,285.668}
+{15,301.141}
+now moving node 29 to the new location
+it will take 2.98812 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4874
+Rx Packets = 4854
+Throughput: 0.0578876 Mbps
+0.000653303
++14780978.0ns
+Flow ID: 2 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4864
+Rx Packets = 4526
+Throughput: 0.0540977 Mbps
+-0.0191751
++2475352.0ns
+Flow ID: 3 Src Addr 10.1.1.29 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 2294
+Throughput: 0.0562719 Mbps
+-50.9723
++18230229.0ns
+Flow ID: 4 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 4835
+Throughput: 0.0578392 Mbps
+0.00030031
++2974130.0ns
+Flow ID: 5 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4858
+Rx Packets = 4659
+Throughput: 0.0557441 Mbps
+0.00246816
++2888840.0ns
+Command ['/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build/scratch/distributed/distributed', '--topology=26', '--movingNode=29'] terminated with signal SIGIOT. Run it under a debugger to get more information (./waf --run <program> --command-template="gdb --args %s <args>").
+./waf --run distributed --topology=27 --movingNode=27
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (3.956s)
+I am 27 and I claimed to be the closest 
+Found the claimers at 51.3583
+----------------
+{2,85.6971}
+{7,85.8138}
+{1,124.567}
+{5,129.684}
+{8,136.371}
+{26,139.964}
+{11,142.832}
+{4,145.417}
+{17,154.091}
+{21,164.521}
+{9,167.308}
+{3,171.761}
+{28,183.019}
+{23,196.891}
+{15,199.585}
+{6,206.218}
+{25,221.741}
+{13,222.329}
+{14,227.706}
+{24,228.083}
+{27,235.495}
+{19,245.432}
+{20,248.228}
+{12,255.362}
+{10,257.919}
+{30,265.979}
+{29,266.439}
+{22,289.603}
+{16,291.596}
+{18,299.282}
+now moving node 27 to the new location
+it will take 15.6997 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4874
+Rx Packets = 4009
+Throughput: 0.0478194 Mbps
+-0.0182881
++36210350.0ns
+Flow ID: 2 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4864
+Rx Packets = 3836
+Throughput: 0.045847 Mbps
+-0.0118265
++51419412.0ns
+Flow ID: 3 Src Addr 10.1.1.27 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 4656
+Throughput: 0.0556928 Mbps
+0.00938133
++13571373.0ns
+Flow ID: 4 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 4764
+Throughput: 0.0569869 Mbps
+0.00543123
++2674279.0ns
+Flow ID: 5 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4858
+Rx Packets = 4853
+Throughput: 0.0580665 Mbps
+0.000300286
++781912.0ns
+Command ['/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build/scratch/distributed/distributed', '--topology=27', '--movingNode=27'] terminated with signal SIGIOT. Run it under a debugger to get more information (./waf --run <program> --command-template="gdb --args %s <args>").
+./waf --run distributed --topology=28 --movingNode=19
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (3.988s)
+I am 19 and I claimed to be the closest 
+Found the claimers at 50.7252
+----------------
+{19,79.9375}
+{1,83.3906}
+{18,107.098}
+{11,135.492}
+{14,142.362}
+{29,145.582}
+{13,151.704}
+{21,160.078}
+{9,161.484}
+{6,162.84}
+{17,168.054}
+{23,187.822}
+{24,195.351}
+{2,203.364}
+{16,205.441}
+{25,209.33}
+{3,217.267}
+{8,232.177}
+{12,232.454}
+{5,239.935}
+{22,255.91}
+{20,256.583}
+{15,265.868}
+{26,267.103}
+{28,270.046}
+{27,271.533}
+{4,274.469}
+{7,275.342}
+{10,283.447}
+{30,304.452}
+now moving node 19 to the new location
+it will take 5.32917 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4874
+Rx Packets = 4387
+Throughput: 0.0523177 Mbps
+0.0017172
++19423458.0ns
+Flow ID: 2 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4864
+Rx Packets = 3989
+Throughput: 0.0476782 Mbps
+-0.0171776
++64337189.0ns
+Flow ID: 3 Src Addr 10.1.1.19 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 4340
+Throughput: 0.0519172 Mbps
+0.00139328
++56425290.0ns
+Flow ID: 4 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 4343
+Throughput: 0.0519519 Mbps
+0.00350123
++26658079.0ns
+Flow ID: 5 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4858
+Rx Packets = 4604
+Throughput: 0.0550865 Mbps
+0.00151264
++32155717.0ns
+Command ['/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build/scratch/distributed/distributed', '--topology=28', '--movingNode=19'] terminated with signal SIGIOT. Run it under a debugger to get more information (./waf --run <program> --command-template="gdb --args %s <args>").
+./waf --run distributed --topology=29 --movingNode=30
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (3.939s)
+I am 30 and I claimed to be the closest 
+Found the claimers at 51.3905
+----------------
+{24,78.3007}
+{12,87.6242}
+{26,92.5257}
+{18,125.797}
+{8,141.542}
+{7,148.899}
+{30,161.784}
+{10,163.221}
+{19,167.979}
+{13,170.144}
+{6,175.277}
+{14,182.071}
+{17,182.349}
+{16,188.425}
+{28,189.172}
+{15,192.528}
+{1,193.272}
+{27,208.014}
+{21,211.842}
+{11,229.142}
+{5,229.846}
+{9,240.653}
+{22,242.308}
+{23,248.705}
+{20,267.23}
+{4,269.759}
+{25,269.974}
+{2,287.8}
+{3,304.587}
+{29,312.72}
+now moving node 30 to the new location
+it will take 10.7856 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4874
+Rx Packets = 4192
+Throughput: 0.0499927 Mbps
+0.000784607
++157582146.0ns
+Flow ID: 2 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4864
+Rx Packets = 4105
+Throughput: 0.0490656 Mbps
+-0.019238
++132835852.0ns
+Flow ID: 3 Src Addr 10.1.1.30 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 0
+Throughput: -0 Mbps
+-102.984
++0.0ns
+Flow ID: 4 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4859
+Rx Packets = 4269
+Throughput: 0.0510678 Mbps
+0.00145079
++104333541.0ns
+Flow ID: 5 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4858
+Rx Packets = 3937
+Throughput: 0.0471059 Mbps
+0.00151956
++134953174.0ns
+Command ['/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-distributed-30nodes/ns-3.29/build/scratch/distributed/distributed', '--topology=29', '--movingNode=30'] terminated with signal SIGIOT. Run it under a debugger to get more information (./waf --run <program> --command-template="gdb --args %s <args>").

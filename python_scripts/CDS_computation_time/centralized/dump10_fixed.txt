@@ -1,0 +1,1322 @@
+./waf --run centralized --topology=0 --movingNode=9
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+[1929/2002] Compiling scratch/centralized/centralized.cc
+[1961/2002] Linking build/scratch/centralized/centralized
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (8.264s)
+2 1
+3 1
+4 1
+6 1
+7 1
+{9,191.478}
+{1,206.325}
+{8,224.564}
+{5,299.658}
+{10,302.223}
+------------
+
+{9,191.478}
+{1,206.325}
+{3,216.324}
+{6,220.202}
+{2,221.398}
+{8,224.564}
+{4,227.405}
+{7,240.637}
+{5,299.658}
+{10,302.223}
+Node 9 will move to the new location, found at 50000
+it will take 12.7652 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4873
+Rx Packets = 0
+Throughput: -0 Mbps
+-102.987
++0.0ns
+Flow ID: 2 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 1791
+Throughput: 0.0445927 Mbps
+-51.8741
++66926056.0ns
+Flow ID: 3 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 1784
+Throughput: 0.0444379 Mbps
+-51.8951
++67002589.0ns
+Flow ID: 4 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4862
+Rx Packets = 4734
+Throughput: 0.0566069 Mbps
+-0.0188851
++36388839.0ns
+Flow ID: 5 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4860
+Rx Packets = 3987
+Throughput: 0.0476844 Mbps
+0.00177126
++182350781.0ns
+./waf --run centralized --topology=1 --movingNode=10
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (4.010s)
+2 1
+3 1
+5 1
+7 1
+8 1
+{10,131.773}
+{1,179.836}
+{9,206.812}
+{6,244.779}
+{4,318.787}
+------------
+
+{10,131.773}
+{7,155.055}
+{3,165.886}
+{1,179.836}
+{8,181.687}
+{9,206.812}
+{5,223.052}
+{6,244.779}
+{2,257}
+{4,318.787}
+Node 10 will move to the new location, found at 50000
+it will take 8.78484 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4873
+Rx Packets = 4809
+Throughput: 0.0573616 Mbps
+0.00253169
++15480142.0ns
+Flow ID: 2 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 4807
+Throughput: 0.0573974 Mbps
+0.00115194
++58473541.0ns
+Flow ID: 3 Src Addr 10.1.1.10 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 2437
+Throughput: 0.0576215 Mbps
+-49.3394
++71898002.0ns
+Flow ID: 4 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4862
+Rx Packets = 4807
+Throughput: 0.0574685 Mbps
+0.000721625
++19895021.0ns
+Flow ID: 5 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4860
+Rx Packets = 4838
+Throughput: 0.0578626 Mbps
+0.00129619
++15280254.0ns
+./waf --run centralized --topology=2 --movingNode=4
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (4.060s)
+3 1
+5 1
+6 1
+7 1
+9 1
+{4,121.417}
+{1,129.596}
+{8,248.252}
+{10,255.417}
+{2,262.564}
+------------
+
+{4,121.417}
+{1,129.596}
+{5,151.875}
+{6,164.204}
+{3,174.221}
+{7,192.193}
+{8,248.252}
+{10,255.417}
+{2,262.564}
+{9,268.002}
+Node 4 will move to the new location, found at 50000
+it will take 8.09444 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4873
+Rx Packets = 4614
+Throughput: 0.0550357 Mbps
+0.00244817
++111586883.0ns
+Flow ID: 2 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 4446
+Throughput: 0.0530854 Mbps
+0.00411281
++119280327.0ns
+Flow ID: 3 Src Addr 10.1.1.4 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 2523
+Throughput: 0.0577778 Mbps
+-47.704
++13489507.0ns
+Flow ID: 4 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4862
+Rx Packets = 4812
+Throughput: 0.057528 Mbps
+0.00116459
++21977293.0ns
+Flow ID: 5 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4860
+Rx Packets = 4370
+Throughput: 0.0522643 Mbps
+0.00330677
++188105909.0ns
+./waf --run centralized --topology=3 --movingNode=8
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (4.048s)
+1 1
+2 1
+3 1
+4 1
+5 1
+7 1
+9 1
+{8,66.1665}
+{10,200.272}
+{6,235.601}
+------------
+
+{8,66.1665}
+{5,118.106}
+{7,125.028}
+{9,140.78}
+{1,172.293}
+{3,198.066}
+{10,200.272}
+{6,235.601}
+{2,238.095}
+{4,293.073}
+Node 8 will move to the new location, found at 50000
+it will take 4.4111 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4873
+Rx Packets = 4846
+Throughput: 0.0578039 Mbps
+0.000793587
++36516502.0ns
+Flow ID: 2 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 4725
+Throughput: 0.056418 Mbps
+0.00179026
++50680239.0ns
+Flow ID: 3 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 2200
+Throughput: 0.0538912 Mbps
+-51.0892
++36568879.0ns
+Flow ID: 4 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4862
+Rx Packets = 4859
+Throughput: 0.0580904 Mbps
+0.000300296
++29452137.0ns
+Flow ID: 5 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4860
+Rx Packets = 2196
+Throughput: 0.0539577 Mbps
+-51.0735
++37112913.0ns
+./waf --run centralized --topology=4 --movingNode=7
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (4.062s)
+1 1
+2 1
+4 1
+8 1
+{7,88.6397}
+{10,127.315}
+{6,174.439}
+{5,226.868}
+{3,244.904}
+{9,282.577}
+------------
+
+{7,88.6397}
+{1,97.2265}
+{10,127.315}
+{6,174.439}
+{2,179.335}
+{4,188.077}
+{8,215.643}
+{5,226.868}
+{3,244.904}
+{9,282.577}
+Node 7 will move to the new location, found at 50000
+it will take 5.90931 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4873
+Rx Packets = 4372
+Throughput: 0.0521502 Mbps
+0.000300324
++82292829.0ns
+Flow ID: 2 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 3837
+Throughput: 0.0458145 Mbps
+0.00270224
++138529709.0ns
+Flow ID: 3 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 4364
+Throughput: 0.052119 Mbps
+-0.0201797
++83807425.0ns
+Flow ID: 4 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4862
+Rx Packets = 4707
+Throughput: 0.0562841 Mbps
+-0.0188873
++30035593.0ns
+Flow ID: 5 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4860
+Rx Packets = 4745
+Throughput: 0.0567504 Mbps
+0.00125092
++48246444.0ns
+./waf --run centralized --topology=5 --movingNode=5
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (3.997s)
+1 1
+2 1
+3 1
+4 1
+8 1
+{5,174.301}
+{6,208.408}
+{10,225.136}
+{9,237.346}
+{7,299.541}
+------------
+
+{8,158.953}
+{5,174.301}
+{2,191.849}
+{1,204.377}
+{4,207.179}
+{6,208.408}
+{10,225.136}
+{9,237.346}
+{3,263.776}
+{7,299.541}
+Node 5 will move to the new location, found at 50000
+it will take 11.6201 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4873
+Rx Packets = 4679
+Throughput: 0.0558116 Mbps
+0.00135889
++75580206.0ns
+Flow ID: 2 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 4489
+Throughput: 0.0536001 Mbps
+0.00169021
++46617759.0ns
+Flow ID: 3 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 2169
+Throughput: 0.0517082 Mbps
+-49.7515
++41223852.0ns
+Flow ID: 4 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4862
+Rx Packets = 2168
+Throughput: 0.0518249 Mbps
+-49.764
++40714430.0ns
+Flow ID: 5 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4860
+Rx Packets = 4841
+Throughput: 0.0578991 Mbps
+0.000300297
++10398619.0ns
+./waf --run centralized --topology=6 --movingNode=10
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (4.056s)
+2 1
+3 1
+4 1
+5 1
+8 1
+{10,99.6544}
+{1,106.588}
+{9,195.974}
+{7,222.466}
+{6,302.174}
+------------
+
+{10,99.6544}
+{1,106.588}
+{3,148.933}
+{8,167.06}
+{9,195.974}
+{2,201.695}
+{5,209.105}
+{7,222.466}
+{4,269.002}
+{6,302.174}
+Node 10 will move to the new location, found at 50000
+it will take 6.64363 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4873
+Rx Packets = 3321
+Throughput: 0.0396127 Mbps
+0.00280856
++214085812.0ns
+Flow ID: 2 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 4567
+Throughput: 0.0545315 Mbps
+0.00162018
++141282031.0ns
+Flow ID: 3 Src Addr 10.1.1.10 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 2163
+Throughput: 0.0518443 Mbps
+-50.0203
++66551031.0ns
+Flow ID: 4 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4862
+Rx Packets = 3696
+Throughput: 0.0441945 Mbps
+-0.0177307
++200027432.0ns
+Flow ID: 5 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4860
+Rx Packets = 4845
+Throughput: 0.0579462 Mbps
+0.0015461
++40388295.0ns
+./waf --run centralized --topology=7 --movingNode=10
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (4.091s)
+2 1
+3 1
+4 1
+5 1
+7 1
+{10,120.851}
+{1,174.909}
+{8,194.201}
+{9,231.864}
+{6,311.466}
+------------
+
+{10,120.851}
+{1,174.909}
+{8,194.201}
+{7,201.827}
+{9,231.864}
+{4,233.439}
+{3,258.256}
+{2,278.806}
+{5,280.817}
+{6,311.466}
+Node 10 will move to the new location, found at 50000
+it will take 8.05674 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4873
+Rx Packets = 4689
+Throughput: 0.0559297 Mbps
+0.00346431
++112250654.0ns
+Flow ID: 2 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 3820
+Throughput: 0.0456119 Mbps
+0.00187026
++163744507.0ns
+Flow ID: 3 Src Addr 10.1.1.10 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 2004
+Throughput: 0.0496989 Mbps
+-51.6845
++70013018.0ns
+Flow ID: 4 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4862
+Rx Packets = 4607
+Throughput: 0.0550772 Mbps
+0.00133193
++121102599.0ns
+Flow ID: 5 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4860
+Rx Packets = 4395
+Throughput: 0.0525639 Mbps
+0.00217481
++130736952.0ns
+./waf --run centralized --topology=9 --movingNode=5
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (4.091s)
+2 1
+3 1
+4 1
+{5,102.903}
+{6,136.81}
+{10,159.179}
+{1,185.529}
+{8,245.742}
+{9,249.377}
+{7,299.181}
+------------
+
+{5,102.903}
+{6,136.81}
+{10,159.179}
+{2,167.836}
+{3,168.778}
+{1,185.529}
+{4,232.521}
+{8,245.742}
+{9,249.377}
+{7,299.181}
+Node 5 will move to the new location, found at 50000
+it will take 6.86019 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4873
+Rx Packets = 4772
+Throughput: 0.0569195 Mbps
+0.00388607
++30797314.0ns
+Flow ID: 2 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 4832
+Throughput: 0.0576962 Mbps
+0.000793585
++30261622.0ns
+Flow ID: 3 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 2213
+Throughput: 0.0548179 Mbps
+-51.6283
++40425298.0ns
+Flow ID: 4 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4862
+Rx Packets = 2207
+Throughput: 0.0547871 Mbps
+-51.6088
++40154223.0ns
+Flow ID: 5 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4860
+Rx Packets = 4779
+Throughput: 0.0571559 Mbps
+0.00316213
++25371542.0ns
+./waf --run centralized --topology=12 --movingNode=7
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (4.123s)
+3 1
+5 1
+6 1
+8 1
+{7,106.042}
+{1,132.337}
+{9,211.447}
+{10,217.683}
+{4,257.218}
+{2,267.004}
+------------
+
+{7,106.042}
+{1,132.337}
+{6,183.232}
+{3,200.482}
+{9,211.447}
+{10,217.683}
+{5,245.428}
+{4,257.218}
+{2,267.004}
+{8,274.144}
+Node 7 will move to the new location, found at 50000
+it will take 7.0695 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4873
+Rx Packets = 2481
+Throughput: 0.0581376 Mbps
+-48.9879
++187713.0ns
+Flow ID: 2 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 4720
+Throughput: 0.0574685 Mbps
+-1.92387
++3470347.0ns
+Flow ID: 3 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 2475
+Throughput: 0.058137 Mbps
+-49.0078
++421375.0ns
+Flow ID: 4 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4862
+Rx Packets = 4780
+Throughput: 0.0572514 Mbps
+-0.183095
++6215781.0ns
+Flow ID: 5 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4860
+Rx Packets = 4709
+Throughput: 0.0574425 Mbps
+-1.94377
++3071921.0ns
+./waf --run centralized --topology=13 --movingNode=7
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (4.194s)
+2 1
+4 1
+5 1
+6 1
+9 1
+{7,142.951}
+{8,206.451}
+{1,226.022}
+{3,253.036}
+{10,276.754}
+------------
+
+{7,142.951}
+{4,168.873}
+{5,180.036}
+{2,185.111}
+{9,189.971}
+{8,206.451}
+{1,226.022}
+{6,226.982}
+{3,253.036}
+{10,276.754}
+Node 7 will move to the new location, found at 50000
+it will take 9.53007 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4873
+Rx Packets = 1995
+Throughput: 0.0489421 Mbps
+-51.2637
++41867612.0ns
+Flow ID: 2 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 4311
+Throughput: 0.0514752 Mbps
+0.000712643
++166545537.0ns
+Flow ID: 3 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 1990
+Throughput: 0.0489436 Mbps
+-51.2843
++41616525.0ns
+Flow ID: 4 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4862
+Rx Packets = 4754
+Throughput: 0.0568349 Mbps
+0.00079359
++35027286.0ns
+Flow ID: 5 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4860
+Rx Packets = 4754
+Throughput: 0.0568583 Mbps
+0.000737581
++31625029.0ns
+./waf --run centralized --topology=14 --movingNode=10
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (4.143s)
+1 1
+2 1
+3 1
+4 1
+5 1
+7 1
+{10,115.039}
+{8,233.679}
+{9,236.409}
+{6,259.176}
+------------
+
+{1,95.0526}
+{10,115.039}
+{3,151.875}
+{5,203.661}
+{2,203.956}
+{8,233.679}
+{9,236.409}
+{6,259.176}
+{4,262.196}
+{7,263.139}
+Node 10 will move to the new location, found at 50000
+it will take 7.66927 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4873
+Rx Packets = 4420
+Throughput: 0.0527188 Mbps
+0.00784974
++132692966.0ns
+Flow ID: 2 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 0
+Throughput: -0 Mbps
+-102.981
++0.0ns
+Flow ID: 3 Src Addr 10.1.1.10 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 4830
+Throughput: 0.0576844 Mbps
+-0.0200891
++116803935.0ns
+Flow ID: 4 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4862
+Rx Packets = 3390
+Throughput: 0.040975 Mbps
+-1.08524
++123548922.0ns
+Flow ID: 5 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4860
+Rx Packets = 4252
+Throughput: 0.0513435 Mbps
+-0.947376
++172547653.0ns
+./waf --run centralized --topology=15 --movingNode=10
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (4.128s)
+2 1
+3 1
+4 1
+5 1
+{10,139.014}
+{9,230.447}
+{1,239.495}
+{7,271.446}
+{8,301.631}
+{6,310.376}
+------------
+
+{10,139.014}
+{4,211.691}
+{2,226.321}
+{9,230.447}
+{1,239.495}
+{5,242.25}
+{3,264.958}
+{7,271.446}
+{8,301.631}
+{6,310.376}
+Node 10 will move to the new location, found at 50000
+it will take 9.26763 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4873
+Rx Packets = 3977
+Throughput: 0.0476288 Mbps
+-0.398251
++200069294.0ns
+Flow ID: 2 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 2703
+Throughput: 0.0327728 Mbps
+-1.51334
++177851737.0ns
+Flow ID: 3 Src Addr 10.1.1.10 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 1228
+Throughput: 0.031326 Mbps
+-53.0201
++68819779.0ns
+Flow ID: 4 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4862
+Rx Packets = 4297
+Throughput: 0.0515845 Mbps
+-0.41065
++135955092.0ns
+Flow ID: 5 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4860
+Rx Packets = 3611
+Throughput: 0.0433629 Mbps
+-0.400967
++163139724.0ns
+./waf --run centralized --topology=16 --movingNode=9
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (4.052s)
+3 1
+5 1
+6 1
+7 1
+{9,136.927}
+{8,188.348}
+{10,201.209}
+{1,221.016}
+{2,226.157}
+{4,259.145}
+------------
+
+{9,136.927}
+{8,188.348}
+{6,196.115}
+{10,201.209}
+{1,221.016}
+{3,221.903}
+{2,226.157}
+{4,259.145}
+{7,271.157}
+{5,314.555}
+Node 9 will move to the new location, found at 50000
+it will take 9.12847 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4873
+Rx Packets = 4864
+Throughput: 0.0580189 Mbps
+0.000300292
++732762.0ns
+Flow ID: 2 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 2203
+Throughput: 0.0544073 Mbps
+-51.4845
++27430457.0ns
+Flow ID: 3 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 2204
+Throughput: 0.0544531 Mbps
+-51.5031
++27048497.0ns
+Flow ID: 4 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4862
+Rx Packets = 4849
+Throughput: 0.0579706 Mbps
+0.000757584
++1251851.0ns
+Flow ID: 5 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4860
+Rx Packets = 4725
+Throughput: 0.0565106 Mbps
+0.00221625
++11657237.0ns
+./waf --run centralized --topology=17 --movingNode=10
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (4.051s)
+2 1
+3 1
+5 1
+7 1
+{10,105.594}
+{1,137.375}
+{8,160.63}
+{9,189.415}
+{6,197.694}
+{4,235.578}
+------------
+
+{7,84.7231}
+{10,105.594}
+{1,137.375}
+{8,160.63}
+{2,169.865}
+{3,172.122}
+{9,189.415}
+{5,191.39}
+{6,197.694}
+{4,235.578}
+Node 10 will move to the new location, found at 50000
+it will take 7.03957 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4873
+Rx Packets = 4807
+Throughput: 0.0573385 Mbps
+0.00116791
++26409432.0ns
+Flow ID: 2 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 4804
+Throughput: 0.057361 Mbps
+0.00223775
++8520535.0ns
+Flow ID: 3 Src Addr 10.1.1.10 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 4790
+Throughput: 0.057205 Mbps
+-0.0172439
++56466074.0ns
+Flow ID: 4 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4862
+Rx Packets = 4798
+Throughput: 0.0573725 Mbps
+-0.0192954
++6275881.0ns
+Flow ID: 5 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4860
+Rx Packets = 4856
+Throughput: 0.0580785 Mbps
+0.000300299
++4577664.0ns
+./waf --run centralized --topology=18 --movingNode=10
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (4.124s)
+3 1
+4 1
+5 1
+6 1
+{10,102.806}
+{8,145.959}
+{1,208.579}
+{7,270.159}
+{2,273.454}
+{9,307.891}
+------------
+
+{10,102.806}
+{8,145.959}
+{6,178.936}
+{1,208.579}
+{5,235.255}
+{3,250.926}
+{7,270.159}
+{2,273.454}
+{4,301.04}
+{9,307.891}
+Node 10 will move to the new location, found at 50000
+it will take 6.85371 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4873
+Rx Packets = 4533
+Throughput: 0.0540702 Mbps
+0.00119689
++95714895.0ns
+Flow ID: 2 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 3730
+Throughput: 0.0445374 Mbps
+0.00177119
++128103867.0ns
+Flow ID: 3 Src Addr 10.1.1.10 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 1821
+Throughput: 0.0448584 Mbps
+-51.3613
++103979721.0ns
+Flow ID: 4 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4862
+Rx Packets = 4861
+Throughput: 0.0581144 Mbps
+0.000300282
++9824020.0ns
+Flow ID: 5 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4860
+Rx Packets = 4606
+Throughput: 0.0550873 Mbps
+0.00229743
++29267914.0ns
+./waf --run centralized --topology=19 --movingNode=6
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (4.080s)
+2 1
+4 1
+5 1
+{6,106.775}
+{8,130.254}
+{1,135.163}
+{3,200.464}
+{10,246.193}
+{7,255.321}
+{9,278.774}
+------------
+
+{6,106.775}
+{8,130.254}
+{1,135.163}
+{4,180.239}
+{2,191.411}
+{3,200.464}
+{5,242.029}
+{10,246.193}
+{7,255.321}
+{9,278.774}
+Node 6 will move to the new location, found at 50000
+it will take 7.11836 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4873
+Rx Packets = 3983
+Throughput: 0.0479623 Mbps
+-0.940372
++114210111.0ns
+Flow ID: 2 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 3760
+Throughput: 0.045324 Mbps
+-0.940354
++118361532.0ns
+Flow ID: 3 Src Addr 10.1.1.6 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 2169
+Throughput: 0.0510276 Mbps
+-49.0857
++59778088.0ns
+Flow ID: 4 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4862
+Rx Packets = 4224
+Throughput: 0.0504987 Mbps
+0.000719443
++104807889.0ns
+Flow ID: 5 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4860
+Rx Packets = 4608
+Throughput: 0.0551193 Mbps
+-0.0121528
++77070073.0ns
+./waf --run centralized --topology=21 --movingNode=6
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (3.974s)
+1 1
+2 1
+4 1
+5 1
+8 1
+{6,180.017}
+{7,190.877}
+{10,207.109}
+{9,212.711}
+{3,275.596}
+------------
+
+{8,137.357}
+{1,138.062}
+{6,180.017}
+{7,190.877}
+{5,202.855}
+{10,207.109}
+{9,212.711}
+{2,215.977}
+{4,231.357}
+{3,275.596}
+Node 6 will move to the new location, found at 50000
+it will take 12.0011 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4873
+Rx Packets = 4743
+Throughput: 0.0565746 Mbps
+0.00210618
++105940840.0ns
+Flow ID: 2 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 4868
+Throughput: 0.0581263 Mbps
+0.000300275
++4137623.0ns
+Flow ID: 3 Src Addr 10.1.1.6 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 2396
+Throughput: 0.056253 Mbps
+-48.9823
++67166041.0ns
+Flow ID: 4 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4862
+Rx Packets = 4811
+Throughput: 0.0575279 Mbps
+-0.0192741
++83522396.0ns
+Flow ID: 5 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4860
+Rx Packets = 4384
+Throughput: 0.0524441 Mbps
+-0.0201797
++198713051.0ns
+./waf --run centralized --topology=23 --movingNode=8
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (4.058s)
+2 1
+3 1
+4 1
+6 1
+7 1
+{8,160.957}
+{10,179.471}
+{1,203.988}
+{5,235.873}
+{9,249.818}
+------------
+
+{8,160.957}
+{10,179.471}
+{1,203.988}
+{5,235.873}
+{9,249.818}
+{7,255.408}
+{6,256.265}
+{3,267.174}
+{2,272.516}
+{4,307.436}
+Node 8 will move to the new location, found at 50000
+it will take 10.7304 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4873
+Rx Packets = 4865
+Throughput: 0.0580301 Mbps
+0.0015732
++12409069.0ns
+Flow ID: 2 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 4842
+Throughput: 0.0578147 Mbps
+0.00225553
++13557671.0ns
+Flow ID: 3 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 0
+Throughput: -0 Mbps
+-102.999
++0.0ns
+Flow ID: 4 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4862
+Rx Packets = 4858
+Throughput: 0.058078 Mbps
+0.00118789
++9545512.0ns
+Flow ID: 5 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4860
+Rx Packets = 0
+Throughput: -0 Mbps
+-102.988
++0.0ns
+./waf --run centralized --topology=24 --movingNode=10
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (4.041s)
+1 1
+2 1
+3 1
+4 1
+5 1
+6 1
+9 1
+{10,177.282}
+{8,189.658}
+{7,211.388}
+------------
+
+{1,68.2129}
+{5,72.519}
+{3,153.339}
+{9,154.438}
+{10,177.282}
+{4,184.543}
+{8,189.658}
+{7,211.388}
+{6,233.032}
+{2,236.021}
+Node 10 will move to the new location, found at 50000
+it will take 11.8188 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4873
+Rx Packets = 4672
+Throughput: 0.0560022 Mbps
+-0.487064
++74242147.0ns
+Flow ID: 2 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 4693
+Throughput: 0.0560367 Mbps
+0.000300324
++69585235.0ns
+Flow ID: 3 Src Addr 10.1.1.10 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 4804
+Throughput: 0.0573621 Mbps
+0.000345514
++40105730.0ns
+Flow ID: 4 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4862
+Rx Packets = 4862
+Throughput: 0.0581263 Mbps
+0.000300288
++499427.0ns
+Flow ID: 5 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4860
+Rx Packets = 4840
+Throughput: 0.0578857 Mbps
+0.00276517
++38794638.0ns
+./waf --run centralized --topology=25 --movingNode=9
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (4.006s)
+3 1
+4 1
+5 1
+6 1
+7 1
+{9,93.6536}
+{1,129.217}
+{10,232.175}
+{8,248.347}
+{2,261.096}
+------------
+
+{9,93.6536}
+{1,129.217}
+{7,156.633}
+{5,174.046}
+{4,185.024}
+{10,232.175}
+{6,244.094}
+{3,248.33}
+{8,248.347}
+{2,261.096}
+Node 9 will move to the new location, found at 50000
+it will take 6.24357 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4873
+Rx Packets = 4820
+Throughput: 0.0574935 Mbps
+0.00133188
++9794890.0ns
+Flow ID: 2 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 2459
+Throughput: 0.0580866 Mbps
+-49.2916
++214232.0ns
+Flow ID: 3 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 2461
+Throughput: 0.0581365 Mbps
+-49.2939
++412540.0ns
+Flow ID: 4 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4862
+Rx Packets = 4805
+Throughput: 0.0574446 Mbps
+0.000721564
++2167515.0ns
+Flow ID: 5 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4860
+Rx Packets = 4783
+Throughput: 0.0572046 Mbps
+0.00172089
++34249844.0ns
+./waf --run centralized --topology=29 --movingNode=10
+Waf: Entering directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Waf: Leaving directory `/home/ahmetpc2/newTryns3/movingNodePDR/ns-allinone-3.29-centralized-10nodes/ns-3.29/build'
+Build commands will be stored in build/compile_commands.json
+'build' finished successfully (4.054s)
+1 1
+4 1
+5 1
+6 1
+9 1
+{10,98.1733}
+{2,159.333}
+{3,208.065}
+{8,238.22}
+{7,267.556}
+------------
+
+{10,98.1733}
+{9,125.1}
+{1,144.679}
+{2,159.333}
+{3,208.065}
+{5,223.173}
+{4,235.202}
+{8,238.22}
+{7,267.556}
+{6,280.348}
+Node 10 will move to the new location, found at 50000
+it will take 6.54489 seconds to move the node to the new location
+successfully moved
+Flow ID: 1 Src Addr 10.1.1.7 Dst Addr 10.1.1.1
+Tx Packets = 4873
+Rx Packets = 3989
+Throughput: 0.0478377 Mbps
+-0.533519
++126661227.0ns
+Flow ID: 2 Src Addr 10.1.1.9 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 4799
+Throughput: 0.0573024 Mbps
+0.000300321
++47850373.0ns
+Flow ID: 3 Src Addr 10.1.1.10 Dst Addr 10.1.1.1
+Tx Packets = 4868
+Rx Packets = 2201
+Throughput: 0.0524386 Mbps
+-49.7206
++106826707.0ns
+Flow ID: 4 Src Addr 10.1.1.5 Dst Addr 10.1.1.1
+Tx Packets = 4862
+Rx Packets = 4418
+Throughput: 0.0531081 Mbps
+-0.543101
++66532304.0ns
+Flow ID: 5 Src Addr 10.1.1.8 Dst Addr 10.1.1.1
+Tx Packets = 4860
+Rx Packets = 4005
+Throughput: 0.0481642 Mbps
+-0.544746
++130674696.0ns
