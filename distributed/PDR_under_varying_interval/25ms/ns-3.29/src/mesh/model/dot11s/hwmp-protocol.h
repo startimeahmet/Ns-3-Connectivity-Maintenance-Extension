@@ -26,8 +26,13 @@
 #include "ns3/event-id.h"
 #include "ns3/traced-value.h"
 #include <vector>
+#include <stack>
 #include <map>
+#include <algorithm>
+#include "hwmp-neighbor-etx.h"
+#include <math.h>
 
+using namespace std;
 namespace ns3 {
 class MeshPointDevice;
 class Packet;
@@ -39,6 +44,8 @@ class HwmpRtable;
 class IePerr;
 class IePreq;
 class IePrep;
+class IeLpp;
+class IeClaim;
 
 /**
  * Structure to encapsulate route change information
@@ -53,6 +60,16 @@ struct RouteChange
   Time lifetime;                ///< lifetime of route
   uint32_t seqnum;              ///< sequence number of route
 };
+//to store the edges for each node in CDS
+struct Edge {
+  uint8_t src, dest;
+
+  friend bool operator==(const Edge& lhs, const Edge& rhs)
+  {
+    return lhs.src == rhs.src && lhs.dest == rhs.dest;
+  }
+};
+typedef pair<int, double> myPair;
 /**
  * \ingroup dot11s
  *
@@ -134,7 +151,7 @@ public:
   void UnsetRoot ();
   ///\}
   ///\brief Statistics:
-  void Report (std::ostream &) const;
+  void Report (std::ostream &);
   ///\brief Reset Statistics:
   void ResetStats ();
   /**
@@ -152,6 +169,9 @@ public:
    * \return pointer to routing table
    */
   Ptr<HwmpRtable> GetRoutingTable (void) const;
+
+  /// ETX for neighbors
+  NeighborEtx m_nbEtx;
 
 private:
   /// allow HwmpProtocolMac class friend access
@@ -231,6 +251,15 @@ private:
    */
   void ReceivePrep (IePrep prep, Mac48Address from, uint32_t interface, Mac48Address fromMp, uint32_t metric);
   /**
+   * \brief Handler for receiving Link Probe Packet
+   *
+   * \param lpp the IE lpp
+   * \param from the from address
+   * \param interface the interface
+   * \param fromMp the 'from MP' address
+   */
+  void ReceiveLpp(IeLpp lpp, Mac48Address from, uint32_t interface, Mac48Address fromMp);
+  /**
    * \brief Handler for receiving Path Error
    *
    * \param destinations the list of failed destinations
@@ -259,6 +288,23 @@ private:
     uint32_t destinationSN,
     uint32_t lifetime,
     uint32_t interface);
+  /**
+   * \brief Send Link Probe Packet
+   */
+  void SendLpp();
+  /**
+   * \brief Send Claim Packet
+   */
+  void SendClaimPkt();
+  /**
+   * \brief Handler for receiving Claim Packet
+   *
+   * \param claimPkt the IE Claim
+   * \param from the from address
+   * \param interface the interface
+   * \param fromMp the 'from MP' address
+   */
+  void ReceiveClaimPkt(IeClaim claimPkt, Mac48Address from, uint32_t interface, Mac48Address fromMp);
   /**
    * \brief forms a path error information element when list of destination fails on a given interface
    * \attention removes all entries from routing table!
@@ -392,6 +438,27 @@ private:
    * \returns the unicast PERR threshold
    */
   uint8_t GetUnicastPerrThreshold ();
+
+  //for CDS
+  uint8_t convertMac48AddresstoInt (Mac48Address MAC);
+  void AddEdges(uint8_t node1, uint8_t node2);
+  bool checkIfEdgeExists(uint8_t node1, uint8_t node2);
+  bool MarkingProcess(uint8_t u);
+  bool restricted_k_dominant_pruning(uint8_t u);
+  vector<Edge> build_subgraph(uint8_t u);
+  void compute_SCC(vector<Edge> const &edges);
+  void SCCUtil(int u, int disc[], int low[], stack<int> *st, bool stackMember[], vector<Edge> const &edges);
+  vector<uint8_t> getAdjacent(uint8_t u, vector<Edge> const &edges);
+  vector<uint8_t> get_vertices(vector<Edge> const &edges);
+  vector<Edge> normalize_edges(vector<Edge> const &edges);
+  void recover_SCC(vector<Edge> const &edges);
+  vector<uint8_t> get_k_neighbors(vector<uint8_t> V_i, uint8_t u);
+  uint8_t DecideWhoisTheClosest();
+  double calculateDistance(uint8_t i);
+  // vector<pair<double,int>> sortTheNodesbyProximity();
+  vector<pair<int, double>> sortAllNodesByProximity();
+  bool checkEligibility();
+
 private:
   /// Statistics structure
   struct Statistics
@@ -405,6 +472,7 @@ private:
     uint16_t initiatedPreq; ///< initiated PREQ
     uint16_t initiatedPrep; ///< initiated PREP
     uint16_t initiatedPerr; ///< initiated PERR
+    uint16_t initiatedLpp; ///< initiated LPP
 
     /**
      * Print function
@@ -414,7 +482,7 @@ private:
     /// constructor
     Statistics ();
   };
-  Statistics m_stats;  ///< statistics 
+  Statistics m_stats;  ///< statistics
 
   HwmpProtocolMacMap m_interfaces; ///< interfaces
   Mac48Address m_address; ///< address
@@ -442,9 +510,13 @@ private:
   EventId m_proactivePreqTimer; ///< proactive PREQ timer
   /// Random start in Proactive PREQ propagation
   Time m_randomStart;
+
+  EventId m_lppTimer; ///< LPP timer
+  /// Random start in LPP propagation
+  Time m_lppRandomStart;
   /// Packet Queue
   std::vector<QueuedPacket> m_rqueue;
-  
+
   /// \name HWMP-protocol parameters
   /// These are all Attributes
   /// \{
@@ -453,6 +525,7 @@ private:
   Time m_dot11MeshHWMPnetDiameterTraversalTime;
   Time m_dot11MeshHWMPpreqMinInterval;
   Time m_dot11MeshHWMPperrMinInterval;
+  Time m_dot11MeshHWMPlppMinInterval;
   Time m_dot11MeshHWMPactiveRootTimeout;
   Time m_dot11MeshHWMPactivePathTimeout;
   Time m_dot11MeshHWMPpathToRootInterval;
@@ -464,8 +537,59 @@ private:
   uint8_t m_unicastDataThreshold;
   bool m_doFlag;
   bool m_rfFlag;
+  // Additional Attributes to be able to select the metric to be used by CmdLine
+  bool m_etxMetric;
+  bool m_enableLpp;
+  uint64_t m_topoId;
+
+  // Additional variables for claim implementation
+  bool m_isClaimer;
+  bool m_doIMove;
+  uint8_t m_claimPktRetry;
+  EventId m_claimPktTimer;
+  std::map<Mac48Address, uint32_t> m_hwmpClaimSeqnoDatabase;
+  std::vector<IeClaim> m_claimersList;
+
+  //for CDS
+  std::vector<vector<uint8_t>> SCC;
+  int SCC_count;
+
+  //ReceiveClaimPkt variables
+  map<uint8_t, double> storeOtherClaimers;
+
+  //receivelpp variables
+  vector<uint8_t> prev_claimingNodes;
+  vector<uint8_t> next_claimingNodes;
+  bool flag = true;
+  uint8_t counter = 0;
+  bool alreadySentClaim = false;
+
+  bool movedToNewLocationFlag = false;
+
+  //the new incident location sent from the tower
+  vector<double> newLocation = { 200, 125, 275 };
+  // vector<double> newLocation = { 250, 175, 350 };
+
+  //storing the neighboring information
+  std::vector<uint8_t> neighbors;
+  std::vector<Edge> edges;
+  std::map<uint8_t, bool> markers;
+  std::map<uint8_t, uint8_t> IDs;
+  std::map<uint8_t, uint8_t> roles;
+  // std::map<uint8_t, uint32_t> positionx;
+  // std::map<uint8_t, double> positiony;
+  // std::map<uint8_t, double> positionz;
+  //
+  // map<uint8_t, double> neighborpositionx;
+  // map<uint8_t, double> neighborpositiony;
+  // map<uint8_t, double> neighborpositionz;
+
+  //storing my information
+  uint8_t myNodeID;
+  bool myMarker;
+  uint8_t myRole;
   ///\}
-  
+
   /// Random variable for random start time
   Ptr<UniformRandomVariable> m_coefficient; ///< coefficient
   Callback <std::vector<Mac48Address>, uint32_t> m_neighboursCallback; ///< neighbors callback

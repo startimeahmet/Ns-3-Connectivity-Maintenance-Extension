@@ -34,15 +34,25 @@
 #include "ie-dot11s-prep.h"
 #include "ns3/trace-source-accessor.h"
 #include "ie-dot11s-perr.h"
+#include "ie-lpp.h"
+#include "ie-claim.h"
+#include "ns3/vector.h"
+#include "ns3/mobility-module.h"
+#include "scratch/distributed/10nodes/nodeIDs.h"
+#include "scratch/distributed/10nodes/nodeRoles.h"
+#include "scratch/distributed/10nodes/finaltopology.h"
 
+#define NIL -1  //for SCC calculations
+#define range 100 //the wifi range of the nodes
+using namespace std;
 namespace ns3 {
 
 NS_LOG_COMPONENT_DEFINE ("HwmpProtocol");
-  
+
 namespace dot11s {
 
 NS_OBJECT_ENSURE_REGISTERED (HwmpProtocol);
-  
+
 TypeId
 HwmpProtocol::GetTypeId ()
 {
@@ -56,6 +66,13 @@ HwmpProtocol::GetTypeId ()
                     MakeTimeAccessor (
                       &HwmpProtocol::m_randomStart),
                     MakeTimeChecker ()
+                    )
+    .AddAttribute ( "LppRandomStart",
+                    "Random delay at first LPP",
+                    TimeValue(Seconds(50)),
+                    MakeTimeAccessor(
+                      &HwmpProtocol::m_lppRandomStart),
+                    MakeTimeChecker()
                     )
     .AddAttribute ( "MaxQueueSize",
                     "Maximum number of packets we can store when resolving route",
@@ -90,6 +107,12 @@ HwmpProtocol::GetTypeId ()
                     TimeValue (MicroSeconds (1024*100)),
                     MakeTimeAccessor (&HwmpProtocol::m_dot11MeshHWMPperrMinInterval),
                     MakeTimeChecker ()
+                    )
+    .AddAttribute ( "Dot11MeshHWMPlppMinInterval",
+                    "Minimal interval between LPPs",
+                    TimeValue(MicroSeconds(1024 * 25)),
+                    MakeTimeAccessor(&HwmpProtocol::m_dot11MeshHWMPlppMinInterval),
+                    MakeTimeChecker()
                     )
     .AddAttribute ( "Dot11MeshHWMPactiveRootTimeout",
                     "Lifetime of poractive routing information",
@@ -161,6 +184,28 @@ HwmpProtocol::GetTypeId ()
                       &HwmpProtocol::m_rfFlag),
                     MakeBooleanChecker ()
                     )
+    .AddAttribute ( "EtxMetric",
+                    "Enable use of ETX Metric overriding AirTime Metric",
+                    BooleanValue (false),
+                    MakeBooleanAccessor (
+                      &HwmpProtocol::m_etxMetric),
+                    MakeBooleanChecker ()
+                    )
+    .AddAttribute ( "LinkProbePacket",
+                    "Enable the Transmission of LPP needed to calculate the ETX Metric, "
+                    "enabled automatically when EtxMetric is selected",
+                    BooleanValue (false),
+                    MakeBooleanAccessor (
+                      &HwmpProtocol::m_enableLpp),
+                    MakeBooleanChecker ()
+                    )
+    .AddAttribute ( "TopologyID",
+                    "Sets which topology will be used",
+                    UintegerValue (0),
+                    MakeUintegerAccessor (
+                      &HwmpProtocol::m_topoId),
+                    MakeUintegerChecker<uint8_t> ()
+                    )
     .AddTraceSource ( "RouteDiscoveryTime",
                       "The time of route discovery procedure",
                       MakeTraceSourceAccessor (
@@ -182,11 +227,13 @@ HwmpProtocol::HwmpProtocol () :
   m_preqId (0),
   m_rtable (CreateObject<HwmpRtable> ()),
   m_randomStart (Seconds (0.1)),
+  m_lppRandomStart (Seconds (50)),
   m_maxQueueSize (255),
   m_dot11MeshHWMPmaxPREQretries (3),
   m_dot11MeshHWMPnetDiameterTraversalTime (MicroSeconds (1024*100)),
   m_dot11MeshHWMPpreqMinInterval (MicroSeconds (1024*100)),
   m_dot11MeshHWMPperrMinInterval (MicroSeconds (1024*100)),
+  m_dot11MeshHWMPlppMinInterval(MicroSeconds(1024*25)),
   m_dot11MeshHWMPactiveRootTimeout (MicroSeconds (1024*5000)),
   m_dot11MeshHWMPactivePathTimeout (MicroSeconds (1024*5000)),
   m_dot11MeshHWMPpathToRootInterval (MicroSeconds (1024*2000)),
@@ -197,7 +244,13 @@ HwmpProtocol::HwmpProtocol () :
   m_unicastPreqThreshold (1),
   m_unicastDataThreshold (1),
   m_doFlag (false),
-  m_rfFlag (false)
+  m_rfFlag (false),
+  m_etxMetric (false),
+  m_enableLpp (true),
+  // m_topoId (32),
+  m_isClaimer (false),
+  m_doIMove (false),
+  m_claimPktRetry (1)
 {
   NS_LOG_FUNCTION (this);
   m_coefficient = CreateObject<UniformRandomVariable> ();
@@ -212,12 +265,29 @@ void
 HwmpProtocol::DoInitialize ()
 {
   NS_LOG_FUNCTION (this);
+  if (m_etxMetric)
+    m_enableLpp = true;
+  if(m_enableLpp)
+  {
+    // m_coefficient->SetAttribute ("Max", DoubleValue(m_lppRandomStart.GetSeconds()));
+    // Time lppRandomStart = Seconds(m_coefficient->GetValue());
+    // m_lppTimer = Simulator::Schedule(lppRandomStart, &HwmpProtocol::SendLpp, this);
+
+    m_coefficient->SetAttribute ("Max", DoubleValue(m_lppRandomStart.GetSeconds()));
+    m_coefficient->SetAttribute ("Min", DoubleValue(m_lppRandomStart.GetSeconds()-0.1));
+    Time lppRandomStart = Seconds(m_coefficient->GetValue());
+    m_lppTimer = Simulator::Schedule(lppRandomStart, &HwmpProtocol::SendLpp, this);
+  }
   m_coefficient->SetAttribute ("Max", DoubleValue (m_randomStart.GetSeconds ()));
   if (m_isRoot)
     {
       Time randomStart = Seconds (m_coefficient->GetValue ());
       m_proactivePreqTimer = Simulator::Schedule (randomStart, &HwmpProtocol::SendProactivePreq, this);
     }
+
+  uint8_t current = convertMac48AddresstoInt(GetAddress());
+  myNodeID = nodeIDs[0][current-1];
+  myRole = nodeRoles[0][current-1];
 }
 
 void
@@ -229,9 +299,12 @@ HwmpProtocol::DoDispose ()
       i->second.preqTimeout.Cancel ();
     }
   m_proactivePreqTimer.Cancel ();
+  if (m_enableLpp) m_lppTimer.Cancel();
   m_preqTimeouts.clear ();
   m_lastDataSeqno.clear ();
   m_hwmpSeqnoMetricDatabase.clear ();
+  m_hwmpClaimSeqnoDatabase.clear ();
+  m_claimersList.clear ();
   m_interfaces.clear ();
   m_rqueue.clear ();
   m_rtable = 0;
@@ -419,6 +492,11 @@ HwmpProtocol::ForwardUnicast (uint32_t  sourceIface, const Mac48Address source, 
 void
 HwmpProtocol::ReceivePreq (IePreq preq, Mac48Address from, uint32_t interface, Mac48Address fromMp, uint32_t metric)
 {
+  if(m_etxMetric/* && Simulator::Now().GetSeconds() >= 50*/)
+  {
+    metric = m_nbEtx.GetEtxForNeighbor(from);	// This line substitutes the airtime link metric by the etx metric
+  }
+
   NS_LOG_FUNCTION (this << from << interface << fromMp << metric);
   preq.IncrementMetric (metric);
   //acceptance cretirea:
@@ -610,9 +688,71 @@ HwmpProtocol::ReceivePreq (IePreq preq, Mac48Address from, uint32_t interface, M
       i->second->SendPreq (preq);
     }
 }
+// vector<pair<double,int>>
+// HwmpProtocol::sortTheNodesbyProximity()
+// {
+//   vector<pair<double,int>> sortedNodes;
+//   int n = nodepositions[m_topoId].size();
+//
+//   for (int i=1; i<n+1; i++) {
+//     double distance = calculateDistance(i);
+//     sortedNodes.push_back (make_pair (distance, i));
+//   }
+//
+//   sort (sortedNodes.begin(), sortedNodes.end());
+//
+//   // for (int i=0; i<n; i++) {
+//   //   cout << sortedNodes[i].first << " " << +sortedNodes[i].second << "\n";
+//   // }
+//   return sortedNodes;
+// }
+vector<pair<int, double>>
+HwmpProtocol::sortAllNodesByProximity()
+{
+  map<int, double> nodeDistances;
+  // create a empty vector of pairs
+  vector<myPair> sorted;
+  for (int i=1; i<11; i++)
+  {
+    double distance = pow((nodepositions[m_topoId][i-1][0]-newLocation[0]),2)+
+                      pow((nodepositions[m_topoId][i-1][1]-newLocation[1]),2)+
+                      pow((nodepositions[m_topoId][i-1][2]-newLocation[2]),2);
+    distance = sqrt(distance);
+    nodeDistances.insert(pair<int, double>(i, distance));
+  }
+
+  // copy key-value pairs from the map to the vector
+  copy(nodeDistances.begin(),
+       nodeDistances.end(),
+       back_inserter<vector<myPair>>(sorted));
+
+  // sort the vector by increasing order of its pair's second value
+  // if second value are equal, order by the pair's first value
+  sort(sorted.begin(), sorted.end(),
+      [](const myPair& l, const myPair& r) {
+        if (l.second != r.second)
+          return l.second < r.second;
+
+        return l.first < r.first;
+      });
+
+  return sorted;
+}
+double
+HwmpProtocol::calculateDistance(uint8_t i)
+{
+  double distance = pow( (newLocation[0]-nodepositions[m_topoId][i-1][0]), 2 ) + pow( (newLocation[1]-nodepositions[m_topoId][i-1][1]), 2 ) + pow( (newLocation[2]-nodepositions[m_topoId][i-1][2]), 2 );
+  distance = sqrt(distance);
+  return distance;
+}
 void
 HwmpProtocol::ReceivePrep (IePrep prep, Mac48Address from, uint32_t interface, Mac48Address fromMp, uint32_t metric)
 {
+  if (m_etxMetric/* && Simulator::Now().GetSeconds() >= 50*/)
+  {
+    metric = m_nbEtx.GetEtxForNeighbor(from);	// This line substitutes the airtime link metric by the etx metric
+  }
+
   NS_LOG_FUNCTION (this << from << interface << fromMp << metric);
   prep.IncrementMetric (metric);
   //acceptance cretirea:
@@ -710,6 +850,691 @@ HwmpProtocol::ReceivePrep (IePrep prep, Mac48Address from, uint32_t interface, M
   NS_ASSERT (prep_sender != m_interfaces.end ());
   prep_sender->second->SendPrep (prep, result.retransmitter);
 }
+uint8_t
+HwmpProtocol::convertMac48AddresstoInt (Mac48Address MAC)
+{
+  stringstream buffer;
+  buffer << MAC << endl;
+  string s = buffer.str();
+  s.pop_back();
+  s = s.substr(s.length()-2);
+
+  uint8_t result = stoi(s, nullptr, 16);
+  return result;
+}
+bool
+HwmpProtocol::checkIfEdgeExists(uint8_t node1, uint8_t node2)
+{
+	bool flag = false;
+	vector<uint8_t> edge = {node1, node2};
+	for (auto i : edges)
+	{
+		vector<uint8_t> temp = {i.src, i.dest};
+		if (edge == temp)
+			flag=true;
+	}
+	return flag;
+}
+void
+HwmpProtocol::AddEdges(uint8_t node1, uint8_t node2)
+{
+  if ( !checkIfEdgeExists(node1, node2) )
+  {
+    edges.push_back({node1, node2});
+  }
+}
+vector<uint8_t>
+HwmpProtocol::get_vertices(vector<Edge> const &edges)
+{
+    vector<uint8_t> nodes;
+    for (auto edge : edges)
+    {
+      nodes.push_back(edge.src);
+      nodes.push_back(edge.dest);
+    }
+    //remove duplicates
+    sort(nodes.begin(), nodes.end());
+    nodes.erase( unique( nodes.begin(), nodes.end() ), nodes.end() );
+
+    return nodes;
+}
+vector<uint8_t>
+HwmpProtocol::getAdjacent(uint8_t u, vector<Edge> const &edges)
+{
+  vector<uint8_t> adjacent;
+
+  for (auto edge : edges)
+  {
+      if (u == edge.src)
+          adjacent.push_back(edge.dest);
+  }
+
+  return adjacent;
+}
+vector<uint8_t>
+HwmpProtocol::get_k_neighbors(vector<uint8_t> V_i, uint8_t u)
+{
+  vector<uint8_t> k_neighbors;
+
+  for (auto i : V_i)
+  {
+    for (auto edge : edges)
+    {
+      if (i==edge.src && edge.dest!=u)
+        k_neighbors.push_back(edge.dest);
+      else if (i==edge.dest && edge.src!=u)
+        k_neighbors.push_back(edge.src);
+    }
+  }
+  //remove duplicates
+  sort(k_neighbors.begin(), k_neighbors.end());
+  k_neighbors.erase( unique( k_neighbors.begin(), k_neighbors.end() ), k_neighbors.end() );
+
+  return k_neighbors;
+}
+vector<Edge>
+HwmpProtocol::normalize_edges(vector<Edge> const &edges)
+{
+  vector<Edge> normalized_edges = edges;
+  vector<uint8_t> vertices = get_vertices(edges);
+  sort(vertices.begin(), vertices.end());
+  uint8_t n = vertices.size();
+
+  for (uint8_t j=0; j<normalized_edges.size(); j++)
+  {
+    for (uint8_t i=0; i<n; i++)
+    {
+      if (normalized_edges[j].src == vertices[i])
+        normalized_edges[j].src = i;
+      else if (normalized_edges[j].dest == vertices[i])
+        normalized_edges[j].dest = i;
+    }
+  }
+  return normalized_edges;
+}
+void
+HwmpProtocol::recover_SCC(vector<Edge> const &edges)
+{
+  vector<uint8_t> vertices = get_vertices(edges);
+  sort(vertices.begin(), vertices.end());
+
+  for (uint8_t i=0; i<SCC.size(); i++)
+    for (uint8_t j=0; j<SCC[i].size(); j++)
+      SCC[i][j] = vertices[SCC[i][j]];
+}
+// A recursive function that finds and prints strongly connected
+// components using DFS traversal
+// u --> The vertex to be visited next
+// disc[] --> Stores discovery times of visited vertices
+// low[] -- >> earliest visited vertex (the vertex with minimum
+//             discovery time) that can be reached from subtree
+//             rooted with current vertex
+// *st -- >> To store all the connected ancestors (could be part
+//           of SCC)
+// stackMember[] --> bit/index array for faster check whether
+//                  a node is in stack
+void
+HwmpProtocol::SCCUtil(int u, int disc[], int low[], stack<int> *st, bool stackMember[], vector<Edge> const &edges)
+{
+    // A static variable is used for simplicity, we can avoid use
+    // of static variable by passing a pointer.
+    static int time = 0;
+
+    // Initialize discovery time and low value
+    disc[u] = low[u] = ++time;
+    st->push(u);
+    stackMember[u] = true;
+
+    // Go through all vertices adjacent to this
+    vector<uint8_t> neighbors_u = getAdjacent(u, edges);
+    for (auto v : neighbors_u)    // v is current adjacent of 'u'
+    {
+        // If v is not visited yet, then recur for it
+        if (disc[v] == -1)
+        {
+            SCCUtil(v, disc, low, st, stackMember, edges);
+
+            // Check if the subtree rooted with 'v' has a
+            // connection to one of the ancestors of 'u'
+            // Case 1 (per above discussion on Disc and Low value)
+            low[u] = min(low[u], low[v]);
+        }
+
+        // Update low value of 'u' only of 'v' is still in stack
+        // (i.e. it's a back edge, not cross edge).
+        // Case 2 (per above discussion on Disc and Low value)
+        else if (stackMember[v] == true)
+            low[u] = min(low[u], disc[v]);
+    }
+
+    // head node found, pop the stack and print an SCC
+    int w = 0;  // To store stack extracted vertices
+    if (low[u] == disc[u])
+    {
+        SCC.emplace_back();
+        while (st->top() != u)
+        {
+            w = (int) st->top();
+            //cout << w << " ";
+            SCC[SCC_count].push_back(w);
+            stackMember[w] = false;
+            st->pop();
+        }
+        w = (int) st->top();
+        //cout << w << "\n";
+        SCC[SCC_count].push_back(w);
+        SCC_count++;
+        stackMember[w] = false;
+        st->pop();
+    }
+}
+// The function to do DFS traversal. It uses SCCUtil()
+void
+HwmpProtocol::compute_SCC(vector<Edge> const &edges)
+{
+  vector<Edge> normalized_edges = normalize_edges(edges);
+  int V = get_vertices(normalized_edges).size(); //number of vertices
+  int *disc = new int[V];
+  int *low = new int[V];
+  bool *stackMember = new bool[V];
+  stack<int> *st = new stack<int>();
+
+  // Initialize disc and low, and stackMember arrays
+  for (int i = 0; i < V; i++)
+  {
+      disc[i] = NIL;
+      low[i] = NIL;
+      stackMember[i] = false;
+  }
+
+  // Call the recursive helper function to find strongly
+  // connected components in DFS tree with vertex 'i'
+  for (int i = 0; i < V; i++)
+      if (disc[i] == NIL)
+          SCCUtil(i, disc, low, st, stackMember, normalized_edges);
+
+  recover_SCC(edges);
+}
+vector<Edge>
+HwmpProtocol::build_subgraph(uint8_t u)
+{
+    vector<uint8_t> V_plus;
+
+    for ( auto w : neighbors )
+    {
+      if ( markers[w]==true )      //means the neighbor is marked
+        if ( myNodeID < IDs[w] )   //if the neighbor's ID is greater than our current node's ID
+          V_plus.push_back(w);
+    }
+
+    sort(V_plus.begin(), V_plus.end());
+
+    vector<Edge> V_plus_subgraph = edges;    //get the graph of nodes seen by our current node
+
+    for ( auto edge : edges )
+    {
+        vector<uint8_t> edge_vec = {edge.src, edge.dest};
+        sort(edge_vec.begin(), edge_vec.end());
+        vector<uint8_t> difference;
+
+        set_difference(edge_vec.begin(), edge_vec.end(), V_plus.begin(), V_plus.end(), back_inserter(difference));
+
+        if (!difference.empty())
+            V_plus_subgraph.erase(remove(V_plus_subgraph.begin(), V_plus_subgraph.end(), edge), V_plus_subgraph.end());
+    }
+
+    return V_plus_subgraph;
+}
+bool
+HwmpProtocol::MarkingProcess (uint8_t u)
+{
+  bool flag=false;
+
+  for (auto v : neighbors)
+  {
+      for (auto w : neighbors)
+      {
+          if (neighbors.size() > 1     &&
+              w != v                   &&
+              checkIfEdgeExists(w, u)  &&
+              checkIfEdgeExists(u, v)  &&
+              !checkIfEdgeExists(w, v)  )
+          {
+              flag = true;
+          }
+      }
+  }
+  return flag;
+}
+bool
+HwmpProtocol::restricted_k_dominant_pruning(uint8_t u)
+{
+    /*
+    Restricted k-dominant pruning algorithm:
+    1. Broadcasts its id and marker (id(u),T) to all its neighbors
+    2. Builds a subgraph G[V+'], where V+' = {w|w ∈ (V' ∩ N(u)) ∧ (id(u) < id(w))}
+    3. Computes the set of strongly connected components {V1', V2', ... , Vl'} of G[V+']
+    4. Changes its marker m(u) to F if there exists Vi',1≤i≤l, such that Nd(u)-Vi'⊆Nd(Vi') and Na(u)-Vi'⊆Na(Vi')
+    */
+    bool marker = true;
+
+    vector<Edge> subgraph = build_subgraph(u);
+
+    compute_SCC(subgraph);
+
+    bool condition = false;
+
+    for ( auto V_i : SCC )
+    {
+        vector<uint8_t> N_u = neighbors;
+        vector<uint8_t> N_vi = get_k_neighbors(V_i, u);
+        sort(N_u.begin(), N_u.end());
+        sort(N_vi.begin(), N_vi.end());
+        sort(V_i.begin(), V_i.end());
+        vector<uint8_t> difference;
+        set_difference(N_u.begin(), N_u.end(), V_i.begin(), V_i.end(), back_inserter(difference));
+        sort(difference.begin(), difference.end());
+        condition = includes(N_vi.begin(), N_vi.end(), difference.begin(), difference.end());
+        if (condition)
+          marker = false;
+    }
+
+    return marker;
+}
+uint8_t
+HwmpProtocol::DecideWhoisTheClosest()
+{
+  vector<uint8_t> two_hop_neighbors = get_vertices(edges);
+
+  double min_distance=numeric_limits<double>::max();
+  uint8_t closest_node;
+
+  for (auto i : two_hop_neighbors)
+  {
+    double distance = calculateDistance(i);
+    if (distance < min_distance)
+    {
+      min_distance = distance;
+      closest_node = i;
+    }
+  }
+
+  //cout << "closest node is: " << +closest_node << " and I am " << +convertMac48AddresstoInt(GetAddress()) << endl;
+
+  return closest_node;
+}
+bool
+HwmpProtocol::checkEligibility()
+{
+  int counter = 0;
+  for (auto i : neighbors)
+  {
+    if (calculateDistance(i)>range)
+      continue;
+    else
+      counter++;
+  }
+  if (counter == 0)
+    return false;
+  else
+    return true;
+}
+void
+HwmpProtocol::SendLpp()
+{
+  IeLpp lpp;
+  m_nbEtx.GotoNextTimeStampAndClearOldest ();
+  lpp.SetLppId(m_nbEtx.GetLppTimeStamp());
+  //Origin Address to be filled by HwmpProtocolMac::SendLpp function
+  lpp.SetOriginSeqno(GetNextHwmpSeqno());
+  m_nbEtx.FillLppCntData(lpp);
+
+  //Vector position = m_mp->GetNode()->GetObject<MobilityModel> () ->GetPosition();
+  //cout << "Node:" << m_mp->GetNode()->GetID() << endl;
+  //cout << "Position, X: " << position.x << ", Y: " << position.y << ", Z: " << position.z << endl;
+  //Vector velocity = m_mp->GetNode()->GetObject<MobilityModel> () ->GetVelocity();
+  //cout << "Velocity, X: " << velocity.x << ", Y: " << velocity.y << ", Z: " << velocity.z << endl;
+  //printf("%.7lf\n",position.x);
+
+  lpp.SetMarker(myMarker);
+  //lpp.SetPositionx(position.x);
+  //lpp.SetPositiony(position.y);
+  //lpp.SetPositionz(position.z);
+  //lpp.SetNeighborPositionx(positionx);
+  //lpp.SetNeighborPositiony(positiony);
+  //lpp.SetNeighborPositionz(positionz);
+
+  lpp.SetNodeID(myNodeID);
+  lpp.SetRole(myRole);
+
+  //cout << GetAddress() << " " << +myNodeID << endl;
+
+  // if (GetAddress() == "00:00:00:00:00:01")
+  // {
+  //   myNodeID = 3;
+  //   myRole = 1;  //gateway
+  //   lpp.SetNodeID(myNodeID);
+  //   lpp.SetRole(myRole);
+  // }
+  // else if (GetAddress() == "00:00:00:00:00:02")
+  // {
+  //   myNodeID = 1;
+  //   myRole = 3;
+  //   lpp.SetNodeID(myNodeID);
+  //   lpp.SetRole(myRole);
+  // }
+
+  for (HwmpProtocolMacMap::const_iterator lpp_sender = m_interfaces.begin(); lpp_sender != m_interfaces.end(); lpp_sender++)
+    {
+      lpp_sender->second->SendLpp(lpp);
+    }
+  m_stats.initiatedLpp++;
+  m_lppTimer = Simulator::Schedule(m_dot11MeshHWMPlppMinInterval, &HwmpProtocol::SendLpp, this);
+}
+void
+HwmpProtocol::ReceiveLpp(IeLpp lpp, Mac48Address from, uint32_t interface, Mac48Address fromMp)
+{
+  SCC_count=0;
+  SCC.clear();
+
+  uint8_t current_me = convertMac48AddresstoInt(GetAddress());
+  uint8_t current_neighbor = convertMac48AddresstoInt(lpp.GetOriginAddress());
+
+  neighbors.push_back(current_neighbor);
+  //remove duplicates in neighbors vector
+  sort(neighbors.begin(), neighbors.end());
+  neighbors.erase( unique( neighbors.begin(), neighbors.end() ), neighbors.end() );
+
+  AddEdges ( current_me, current_neighbor );
+  AddEdges ( current_neighbor, current_me );
+  for (auto elem : lpp.GetNeighborList())
+  {
+    uint8_t element = convertMac48AddresstoInt(elem.first);
+    AddEdges ( current_neighbor, element );
+    AddEdges ( element, current_neighbor );
+  }
+
+  markers.insert(pair<uint8_t, bool>(current_neighbor, lpp.GetMarker()));
+  IDs.insert(pair<uint8_t, uint8_t>(current_neighbor, lpp.GetNodeID()));
+  roles.insert(pair<uint8_t, uint8_t>(current_neighbor, lpp.GetRole()));
+  //positionx.insert(pair<uint8_t, uint32_t>(current_neighbor, lpp.GetPositionx()));
+  //positiony.insert(pair<uint8_t, double>(current_neighbor, lpp.GetPositiony()));
+  //positionz.insert(pair<uint8_t, double>(current_neighbor, lpp.GetPositionz()));
+
+  // map<uint8_t, double>::iterator i;
+
+  // for (i = positionx.begin(); i != positionx.end(); i++)
+  // {
+  //   cout << +(*i).first << " " << (*i).second << endl;
+  // }
+  // cout << endl;
+
+  // neighborpositionx = lpp.GetNeighborPositionx();
+  // neighborpositiony = lpp.GetNeighborPositiony();
+  // neighborpositionz = lpp.GetNeighborPositionz();
+
+  // for (i = lpp.GetNeighborPositionx().begin(); i != lpp.GetNeighborPositionx().end(); i++)
+  // {
+  //   // cout << +(*i).first << endl;
+  //   // cout << (*i).second << endl;
+  //   neighborpositionx.insert(pair<uint8_t, double>((*i).first, (*i).second));
+  // }
+  // for (i = lpp.GetNeighborPositiony().begin(); i != lpp.GetNeighborPositiony().end(); i++)
+  // {
+  //   neighborpositiony.insert(pair<uint8_t, double>((*i).first, (*i).second));
+  // }
+  // for (i = lpp.GetNeighborPositionz().begin(); i != lpp.GetNeighborPositionz().end(); i++)
+  // {
+  //   neighborpositionz.insert(pair<uint8_t, double>((*i).first, (*i).second));
+  // }
+
+  // for (i = neighborpositionx.begin(); i != neighborpositionx.end(); i++)
+  // {
+  //   //cout << GetAddress () << " " << positionx.size() << " " << get_vertices(edges).size() << endl;
+  //   cout << +(*i).first << " " << (*i).second << endl;
+  // }
+
+  // for (auto i : edges)
+  // {
+  //   cout << GetAddress() << " " << i.src << i.dest << endl;
+  // }
+  // cout << endl;
+
+  // if (GetAddress()=="00:00:00:00:00:14")
+  // {
+  //   for ( auto i : neighbors)
+  //     cout << +i << " " << endl;
+  // }
+
+  myMarker = MarkingProcess(current_me);
+  //cout << "I am  " << +current_me << " and my marker after marking process is " << myMarker << endl;
+  if (myRole == 1 || myRole == 2)
+  {
+    myMarker = true;
+  }
+
+  if (myMarker == true && myRole == 3)
+  {
+    myMarker = restricted_k_dominant_pruning(current_me);
+    //cout << "I am " << +current_me << " and my marker after pruning is " << myMarker << endl;
+  }
+
+  uint8_t closest = DecideWhoisTheClosest();
+  //cout << "I am " << +current_me << " and closest is " <<  +closest << endl;
+
+  // if (myClaimCounter > 100)
+  // {
+  //   if (control==0 && current_me==2)
+  //   {
+  //     m_isClaimer=true;
+  //     cout << "I sent a claim packet" << endl;
+  //     SendClaimPkt();
+  //     control++;
+  //   }
+  // }
+
+  // EventId testTimer;
+  // Time testTimeValue = MilliSeconds(100);
+  // if (GetAddress() == "00:00:00:00:00:03")
+  // {
+  //   // cout << "test" << endl;
+  //   testTimer = Simulator::Schedule(testTimeValue, &HwmpProtocol::SendClaimPkt, this);
+  // }
+
+  // if (!myMarker)
+  // {
+  //   cout << "I am " << +current_me << " and my marker is " << myMarker << ", my role is " << +myRole << " , my ID is " << +myNodeID << endl;
+  // }
+
+  if ( current_me == closest )
+  {
+    next_claimingNodes.push_back(current_me);
+    //remove duplicates
+    sort(next_claimingNodes.begin(), next_claimingNodes.end());
+    next_claimingNodes.erase( unique( next_claimingNodes.begin(), next_claimingNodes.end() ), next_claimingNodes.end() );
+    if (flag==true) //do this only once
+    {
+      prev_claimingNodes = next_claimingNodes;
+      flag = false;
+    }
+
+    if (next_claimingNodes == prev_claimingNodes)
+      counter++;
+    else
+      prev_claimingNodes = next_claimingNodes;
+
+    if (counter>=10 && !myMarker)
+      m_isClaimer=true;
+
+    if (counter >= 15 && alreadySentClaim==false)  //if list of claiming nodes don't change for 15 consecutive times, then claim being closest
+    {
+      // if (checkEligibility() && myMarker != true)
+      // {
+        // m_isClaimer = true;
+        if (!myMarker)
+        {
+          SendClaimPkt();
+          alreadySentClaim=true;
+          cout << "I am " << +current_me << " and I claimed to be the closest " << endl;
+          cout << "Found the claimers at " << Simulator::Now().GetSeconds() << endl;
+          vector<myPair> sortedAllNodes = sortAllNodesByProximity();
+
+          // print the vector
+          cout << "----------------" << endl;
+          for (auto const &myPair: sortedAllNodes) {
+            cout << '{' << myPair.first << "," << myPair.second << '}' << '\n';
+          }
+        }
+      // }
+      // else if (myMarker)
+      //   cout << +current_me << " claimed but, part of CDS" << endl;
+      // else if (!checkEligibility())
+      //   cout << +current_me << " claimed but not eligible" << endl;
+    }
+  }
+
+  // if (current_me == 9 || current_me == 15)
+  // {
+  //   Vector position = m_mp->GetNode()->GetObject<MobilityModel> () ->GetPosition();
+  //   cout << position.x << " " << position.y << " " << position.z << endl;
+  // }
+
+  NS_LOG_FUNCTION(this << from << interface);
+  Mac48Address origin = lpp.GetOriginAddress();
+  NS_ASSERT(origin == from); // Neighbor from which the packet is received is always originator of LPP packet
+  uint8_t lppTimeStamp = lpp.GetLppId();
+  uint8_t numNeighbors = lpp.GetNumberNeighbors();
+  std::pair<Mac48Address, uint8_t> nb_lppreverse;
+
+  // Search for my MAC address in LPP packet
+  uint8_t lppReverse = 0; // if my address is not found in the packet, lpp reverse should be 0
+  for (uint8_t j = 0; j<numNeighbors; ++j)
+    {
+      lpp.RemoveFromNeighborsList(nb_lppreverse);
+      if (nb_lppreverse.first == GetAddress()) // is it my MAC address?
+        {
+          lppReverse = nb_lppreverse.second;
+          break;
+        }
+    }
+  // Add new or udate existing etx entry for neighbor with MAC address "from".
+  // LPP count is updated based on lpp Time Slot indicated in packet.
+  // LPP reverse count is updated from list provided in LPP packet.
+  m_nbEtx.UpdateNeighborEtx(from, lppTimeStamp, lppReverse);
+}
+void
+HwmpProtocol::ReceiveClaimPkt(IeClaim claimPkt, Mac48Address from, uint32_t interface, Mac48Address fromMp)
+{
+  // uint8_t current_me = convertMac48AddresstoInt(GetAddress());
+  // cout << +current_me << endl;
+  // uint8_t current_claimer = convertMac48AddresstoInt(claimPkt.GetOriginAddress());
+  if ( claimPkt.IsClaimer() && convertMac48AddresstoInt(GetAddress())!=convertMac48AddresstoInt(claimPkt.GetOriginAddress()) )
+  {
+    if (m_isClaimer)
+    {
+      uint8_t current_claimer = convertMac48AddresstoInt(claimPkt.GetOriginAddress());
+      cout << "I am " << +convertMac48AddresstoInt(GetAddress()) << " and I got a claim from " << +current_claimer << " at " << Simulator::Now().GetSeconds() << endl;
+
+      Ptr<MobilityModel> mob = m_mp->GetNode()->GetObject<MobilityModel>();
+      Vector myPosition = mob->GetPosition();
+      double myDistance = pow( (newLocation[0]-myPosition.x), 2 ) + pow( (newLocation[1]-myPosition.y), 2 ) + pow( (newLocation[2]-myPosition.z), 2 );
+      myDistance = sqrt(myDistance);
+
+      Vector claimerLocation = claimPkt.GetLocation();
+      double claimerDistance = pow( (newLocation[0]-claimerLocation.x), 2 ) + pow( (newLocation[1]-claimerLocation.y), 2 ) + pow( (newLocation[2]-claimerLocation.z), 2 );
+      claimerDistance = sqrt(claimerDistance);
+
+      cout << myDistance << " " << claimerDistance << endl;
+
+      storeOtherClaimers.insert(pair<uint8_t, double>(current_claimer, claimerDistance));
+
+      uint8_t counter = 0;
+      map<uint8_t, double>::iterator i;
+      for (i = storeOtherClaimers.begin(); i != storeOtherClaimers.end(); i++)
+      {
+        if (myDistance < i->second)
+          counter++;
+      }
+      if (counter == storeOtherClaimers.size())
+      {
+        cout << "I (" << +convertMac48AddresstoInt(GetAddress()) << ") will move" << endl;
+      }
+
+      // if (closestDominator != 0)
+      // {
+      //   double distanceToClosestDominator = calculateDistance(closestDominator);
+      //   if (distanceToClosestDominator<=range)
+      //   {
+      //     uint8_t theNodeBeingSent = sortedClaimingNodes[0].second;
+      //     nodesBeingSent.push_back(theNodeBeingSent);
+      //     vector<uint32_t> location;
+      //     uint32_t x = newLocation[0]*10;
+      //     uint32_t y = newLocation[1]*10;
+      //     uint32_t z = newLocation[2]*10;
+      //     location.push_back(x);
+      //     location.push_back(y);
+      //     location.push_back(z);
+      //     nodesBeingSentLocations.push_back(location);
+      //     cout << "sent the node " << +theNodeBeingSent << endl;
+      //     sentTheNodesFlag = true;
+      //   }
+      //   else if (distanceToClosestDominator>range && distanceToClosestDominator<=2*range)
+      //   {
+      //     if (sortedClaimingNodes.size()>=2)
+      //     {
+      //       uint8_t theNodeBeingSent = sortedClaimingNodes[0].second;
+      //       nodesBeingSent.push_back(theNodeBeingSent);
+      //       vector<uint32_t> location1;
+      //       uint32_t a = newLocation[0]*10;
+      //       uint32_t b = newLocation[1]*10;
+      //       uint32_t c = newLocation[2]*10;
+      //       location1.push_back(a);
+      //       location1.push_back(b);
+      //       location1.push_back(c);
+      //       nodesBeingSentLocations.push_back(location1);
+      //       cout << "sent the node " << +theNodeBeingSent << endl;
+      //
+      //       theNodeBeingSent = sortedClaimingNodes[1].second;
+      //       nodesBeingSent.push_back(theNodeBeingSent);
+      //       vector<uint32_t> location2;
+      //       uint32_t x = 10*((newLocation[0]+nodepositions[m_topoId][closestDominator-1][0])/2);
+      //       uint32_t y = 10*((newLocation[1]+nodepositions[m_topoId][closestDominator-1][1])/2);
+      //       uint32_t z = 10*((newLocation[2]+nodepositions[m_topoId][closestDominator-1][2])/2);
+      //       location2.push_back(x);
+      //       location2.push_back(y);
+      //       location2.push_back(z);
+      //       nodesBeingSentLocations.push_back(location2);
+      //       cout << "sent the node " << +theNodeBeingSent << endl;
+      //       sentTheNodesFlag = true;
+      //     }
+      //     else
+      //       cout << "there are not enough suitable nodes to send" << endl;
+      //   }
+      // }
+
+    }
+  }
+
+  //acceptance criteria:
+  std::map<Mac48Address, uint32_t>::const_iterator i = m_hwmpClaimSeqnoDatabase.find (claimPkt.GetOriginAddress ());
+  if (i != m_hwmpClaimSeqnoDatabase.end() and ( (i->second - claimPkt.GetOriginatorSeqNumber()) >= 0 ) )
+    {
+      return;
+    }
+  m_hwmpClaimSeqnoDatabase[claimPkt.GetOriginAddress ()] = claimPkt.GetOriginatorSeqNumber ();
+  NS_LOG_DEBUG ("I am " << GetAddress () << ", Accepted claim packet from address" << from << ", claim pkt:" << claimPkt);
+  if (m_isClaimer)
+  {
+    // Here you process the claimPkt Information Element because it is of interest to other Claimer Nodes
+    m_claimersList.push_back (claimPkt);
+  }
+  // Forward Claim Packet to all interfaces, there might be other claimer node(s):
+  NS_LOG_DEBUG ("I am " << GetAddress () << "retransmitting Claim Packet:" << claimPkt);
+  for (HwmpProtocolMacMap::const_iterator i = m_interfaces.begin (); i != m_interfaces.end (); i++)
+    {
+      i->second->SendClaimPkt (claimPkt);
+    }
+}
 void
 HwmpProtocol::ReceivePerr (std::vector<FailedDestination> destinations, Mac48Address from, uint32_t interface, Mac48Address fromMp)
 {
@@ -760,6 +1585,36 @@ HwmpProtocol::SendPrep (
   NS_ASSERT (prep_sender != m_interfaces.end ());
   prep_sender->second->SendPrep (prep, retransmitter);
   m_stats.initiatedPrep++;
+}
+void
+HwmpProtocol::SendClaimPkt()
+{
+  IeClaim claimPkt;
+  if (m_isClaimer)
+  {
+    claimPkt.SetIsClaimer();
+  }
+  if (m_doIMove)
+  {
+    claimPkt.SetDoIMove();
+  }
+  claimPkt.SetOriginAddress(GetAddress());
+  claimPkt.SetMarker(myMarker);
+  claimPkt.SetRole(myRole);
+  Ptr<MobilityModel> mob = m_mp->GetNode()->GetObject<MobilityModel>();
+  Vector m_position = mob->GetPosition();
+  claimPkt.SetLocation(m_position);
+  //Origin Address to be filled by HwmpProtocolMac::SendClaimPkt function
+  claimPkt.SetOriginatorSeqNumber(GetNextHwmpSeqno());
+  for (HwmpProtocolMacMap::const_iterator claim_sender = m_interfaces.begin(); claim_sender != m_interfaces.end(); claim_sender++)
+    {
+      claim_sender->second->SendClaimPkt(claimPkt);
+    }
+  m_claimPktRetry--;
+  if (m_claimPktRetry)
+  {
+    m_claimPktTimer = Simulator::Schedule(MilliSeconds (500), &HwmpProtocol::SendClaimPkt, this);
+  }
 }
 bool
 HwmpProtocol::Install (Ptr<MeshPointDevice> mp)
@@ -1220,7 +2075,8 @@ HwmpProtocol::Statistics::Statistics () :
   totalDropped (0),
   initiatedPreq (0),
   initiatedPrep (0),
-  initiatedPerr (0)
+  initiatedPerr (0),
+  initiatedLpp (0)
 {
 }
 void HwmpProtocol::Statistics::Print (std::ostream & os) const
@@ -1234,10 +2090,11 @@ void HwmpProtocol::Statistics::Print (std::ostream & os) const
   "totalDropped=\"" << totalDropped << "\" "
   "initiatedPreq=\"" << initiatedPreq << "\" "
   "initiatedPrep=\"" << initiatedPrep << "\" "
-  "initiatedPerr=\"" << initiatedPerr << "\"/>" << std::endl;
+  "initiatedPerr=\"" << initiatedPerr << "\" "
+  "initiatedLpp=\"" << initiatedLpp << "\"/>" << std::endl;
 }
 void
-HwmpProtocol::Report (std::ostream & os) const
+HwmpProtocol::Report (std::ostream & os)
 {
   os << "<Hwmp "
   "address=\"" << m_address << "\"" << std::endl <<
@@ -1246,6 +2103,7 @@ HwmpProtocol::Report (std::ostream & os) const
   "Dot11MeshHWMPnetDiameterTraversalTime=\"" << m_dot11MeshHWMPnetDiameterTraversalTime.GetSeconds () << "\"" << std::endl <<
   "Dot11MeshHWMPpreqMinInterval=\"" << m_dot11MeshHWMPpreqMinInterval.GetSeconds () << "\"" << std::endl <<
   "Dot11MeshHWMPperrMinInterval=\"" << m_dot11MeshHWMPperrMinInterval.GetSeconds () << "\"" << std::endl <<
+  "Dot11MeshHWMPlppMinInterval=\"" << m_dot11MeshHWMPlppMinInterval.GetSeconds () << "\"" << std::endl <<
   "Dot11MeshHWMPactiveRootTimeout=\"" << m_dot11MeshHWMPactiveRootTimeout.GetSeconds () << "\"" << std::endl <<
   "Dot11MeshHWMPactivePathTimeout=\"" << m_dot11MeshHWMPactivePathTimeout.GetSeconds () << "\"" << std::endl <<
   "Dot11MeshHWMPpathToRootInterval=\"" << m_dot11MeshHWMPpathToRootInterval.GetSeconds () << "\"" << std::endl <<
@@ -1258,6 +2116,8 @@ HwmpProtocol::Report (std::ostream & os) const
   "doFlag=\"" << m_doFlag << "\"" << std::endl <<
   "rfFlag=\"" << m_rfFlag << "\">" << std::endl;
   m_stats.Print (os);
+  m_nbEtx.Print (os);
+  //m_rtable->Print (os);
   for (HwmpProtocolMacMap::const_iterator plugin = m_interfaces.begin (); plugin != m_interfaces.end (); plugin++)
     {
       plugin->second->Report (os);
