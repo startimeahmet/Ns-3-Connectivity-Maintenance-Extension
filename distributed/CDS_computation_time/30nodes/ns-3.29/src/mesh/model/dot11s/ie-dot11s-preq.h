@@ -26,6 +26,7 @@
 #include "ns3/mac48-address.h"
 #include "ns3/mesh-information-element-vector.h"
 
+using namespace std;
 namespace ns3 {
 namespace dot11s {
 /**
@@ -140,7 +141,7 @@ public:
 
   // Setters for fields:
   /**
-   * Set number of hops from originator to mesh STA transmitting this 
+   * Set number of hops from originator to mesh STA transmitting this
    * element
    * \param hopcount the hop count
    */
@@ -232,6 +233,10 @@ public:
    * \returns the destination count
    */
   uint8_t  GetDestCount () const;
+  vector<uint8_t> GetSendTheNodes () const;
+  void SetSendTheNodes (vector<uint8_t> i);
+  vector<vector<uint32_t>> GetSendNodeLocations () const;
+  void SetSendNodeLocations (vector<vector<uint32_t>> i);
 
   /// Handle TTL
   void  DecrementTtl ();
@@ -252,7 +257,7 @@ public:
    * \returns true if full
    */
   bool IsFull () const;
-  
+
   // Inherited from WifiInformationElement
   virtual WifiInformationElementId ElementId () const;
   virtual void SerializeInformationField (Buffer::Iterator i) const;
@@ -265,7 +270,7 @@ private:
    * how many destinations we support
    * \todo make as an attribute
    */
-  uint8_t m_maxSize; 
+  uint8_t m_maxSize;
 
   uint8_t m_flags; ///< flags
   uint8_t m_hopCount; ///< hop count
@@ -276,6 +281,8 @@ private:
   uint32_t m_lifetime; ///< lifetime
   uint32_t m_metric; ///< metric
   uint8_t  m_destCount; ///< destination count
+  vector<uint8_t> m_sendTheNodes; //newly added
+  vector<vector<uint32_t>> m_sendNodeLocations; //newly added
   std::vector<Ptr<DestinationAddressUnit> >  m_destinations; ///< the destinations
 
   /**
@@ -295,4 +302,3 @@ std::ostream &operator << (std::ostream &os, const IePreq &preq);
 } // namespace dot11s
 } // namespace ns3
 #endif
-
