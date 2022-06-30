@@ -33,6 +33,8 @@
 #include "ns3/ie-dot11s-prep.h"
 #include "ns3/ie-dot11s-preq.h"
 #include "ns3/ie-dot11s-rann.h"
+#include "dot11s/ie-lpp.h"
+#include "dot11s/ie-claim.h"
 
 namespace ns3 {
 
@@ -98,6 +100,12 @@ MeshInformationElementVector::DeserializeSingleIe (Buffer::Iterator start)
       break;
     case IE_PERR:
       newElement = Create<dot11s::IePerr> ();
+      break;
+    case IE_LPP:
+      newElement = Create<dot11s::IeLpp> ();
+      break;
+    case IE_CLAIM:
+      newElement = Create<dot11s::IeClaim> ();
       break;
     case IE11S_MESH_PEERING_PROTOCOL_VERSION:
       newElement = Create<dot11s::IePeeringProtocol> ();

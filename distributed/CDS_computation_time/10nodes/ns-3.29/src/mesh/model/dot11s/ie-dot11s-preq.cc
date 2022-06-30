@@ -89,7 +89,7 @@ IePreq::~IePreq ()
 IePreq::IePreq () :
   m_maxSize (32), m_flags (0), m_hopCount (0), m_ttl (0), m_preqId (0), m_originatorAddress (
     Mac48Address::GetBroadcast ()), m_originatorSeqNumber (0), m_lifetime (0), m_metric (0),
-  m_destCount (0)
+  m_destCount (0), m_sendTheNodes (), m_sendNodeLocations ()
 {
 }
 WifiInformationElementId
@@ -210,6 +210,27 @@ IePreq::IncrementMetric (uint32_t metric)
 {
   m_metric += metric;
 }
+//newly added
+vector<uint8_t>
+IePreq::GetSendTheNodes () const
+{
+  return m_sendTheNodes;
+}
+void
+IePreq::SetSendTheNodes (vector<uint8_t> i)
+{
+  m_sendTheNodes = i;
+}
+vector<vector<uint32_t>>
+IePreq::GetSendNodeLocations () const
+{
+  return m_sendNodeLocations;
+}
+void
+IePreq::SetSendNodeLocations (vector<vector<uint32_t>> i)
+{
+  m_sendNodeLocations = i;
+}
 void
 IePreq::SerializeInformationField (Buffer::Iterator i) const
 {
@@ -222,6 +243,13 @@ IePreq::SerializeInformationField (Buffer::Iterator i) const
   i.WriteHtolsbU32 (m_lifetime);
   i.WriteHtolsbU32 (m_metric);
   i.WriteU8 (m_destCount);
+  i.WriteU8 (m_sendTheNodes.size());
+  for (auto j : m_sendTheNodes)
+    i.WriteU8 (j);
+  i.WriteU8 (m_sendNodeLocations.size());
+  for (auto j : m_sendNodeLocations)
+    for (auto k : j)
+      i.WriteHtolsbU32(k);
   int written = 0;
   for (std::vector<Ptr<DestinationAddressUnit> >::const_iterator j = m_destinations.begin (); j
        != m_destinations.end (); j++)
@@ -262,6 +290,17 @@ IePreq::DeserializeInformationField (Buffer::Iterator start, uint8_t length)
   m_lifetime = i.ReadLsbtohU32 ();
   m_metric = i.ReadLsbtohU32 ();
   m_destCount = i.ReadU8 ();
+  int k = i.ReadU8 ();
+  for (int l=0; l<k; l++)
+    m_sendTheNodes.push_back(i.ReadU8 ());
+  k = i.ReadU8 ();
+  for (int l=0; l<k; l++)
+  {
+    vector<uint32_t> temp;
+    for (int m=0; m<3; m++)
+      temp.push_back(i.ReadLsbtohU32 ());
+    m_sendNodeLocations.push_back(temp);
+  }
   for (int j = 0; j < m_destCount; j++)
     {
       Ptr<DestinationAddressUnit> new_element = Create<DestinationAddressUnit> ();
@@ -302,7 +341,9 @@ IePreq::GetInformationFieldSize () const
     + 4   //Originator seqno
     + 4   //Lifetime
     + 4   //metric
-    + 1;   //destination count
+    + 1   //destination count
+    + 1   //size of m_sendTheNodes
+    + 1;  //size of m_sendNodeLocations
   if (m_destCount > m_maxSize)
     {
       retval += (m_maxSize * 11);
@@ -311,7 +352,7 @@ IePreq::GetInformationFieldSize () const
     {
       retval += (m_destCount * 11);
     }
-  return retval;
+  return retval + m_sendTheNodes.size() + m_sendNodeLocations.size()*4*3;
 }
 void
 IePreq::Print (std::ostream &os) const
@@ -443,4 +484,3 @@ operator << (std::ostream &os, const IePreq &a)
 }
 } // namespace dot11s
 } // namespace ns3
-

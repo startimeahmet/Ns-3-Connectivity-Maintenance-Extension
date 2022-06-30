@@ -30,11 +30,13 @@
 #include "ie-dot11s-prep.h"
 #include "ie-dot11s-rann.h"
 #include "ie-dot11s-perr.h"
+#include "ie-lpp.h"
+#include "ie-claim.h"
 
 namespace ns3 {
 
 NS_LOG_COMPONENT_DEFINE ("HwmpProtocolMac");
-  
+
 namespace dot11s {
 
 HwmpProtocolMac::HwmpProtocolMac (uint32_t ifIndex, Ptr<HwmpProtocol> protocol) :
@@ -159,6 +161,19 @@ HwmpProtocolMac::ReceiveAction (Ptr<Packet> packet, const WifiMacHeader & header
               failedDestinations.push_back (*i);
             }
         }
+      if ((*i)->ElementId() == IE_LPP)
+        {
+          Ptr<IeLpp> lpp = DynamicCast<IeLpp>(*i);
+          NS_ASSERT(lpp != 0);
+          m_stats.rxLpp++;
+          m_protocol->ReceiveLpp(*lpp, header.GetAddr2(), m_ifIndex, header.GetAddr3());
+        }
+    if ((*i)->ElementId() == IE_CLAIM)
+      {
+        Ptr<IeClaim> claimPkt = DynamicCast<IeClaim>(*i);
+        NS_ASSERT(claimPkt != 0);
+        m_protocol->ReceiveClaimPkt(*claimPkt, header.GetAddr2(), m_ifIndex, header.GetAddr3());
+      }
     }
   if (failedDestinations.size () > 0)
     {
@@ -219,7 +234,7 @@ HwmpProtocolMac::GetWifiActionHeader ()
   WifiActionHeader actionHdr;
   WifiActionHeader::ActionValue action;
   action.meshAction = WifiActionHeader::PATH_SELECTION;
-  actionHdr.SetAction (WifiActionHeader::MESH, action); 
+  actionHdr.SetAction (WifiActionHeader::MESH, action);
   return actionHdr;
 }
 void
@@ -325,6 +340,57 @@ HwmpProtocolMac::SendPrep (IePrep prep, Mac48Address receiver)
   m_stats.txMgt++;
   m_stats.txMgtBytes += packet->GetSize ();
   m_parent->SendManagementFrame (packet, hdr);
+}
+void
+HwmpProtocolMac::SendLpp(IeLpp lpp)
+{
+  NS_LOG_FUNCTION(this);
+  //Create packet
+  Ptr<Packet> packet = Create<Packet>();
+  MeshInformationElementVector elements;
+  //Add Originator Address
+  lpp.SetOriginAddress(m_parent->GetAddress());
+  elements.AddInformationElement(Ptr<IeLpp>(&lpp));
+  packet->AddHeader(elements);
+  packet->AddHeader(GetWifiActionHeader());
+  //create 802.11 header:
+  WifiMacHeader hdr;
+  hdr.SetType(WIFI_MAC_MGT_ACTION);
+  hdr.SetDsNotFrom();
+  hdr.SetDsNotTo();
+  hdr.SetAddr1(Mac48Address::GetBroadcast ());
+  hdr.SetAddr2(m_parent->GetAddress());
+  hdr.SetAddr3(m_protocol->GetAddress());
+  //Send Management frame
+  m_stats.txLpp++;
+  m_stats.txMgt++;
+  m_stats.txMgtBytes += packet->GetSize();
+  m_parent->SendManagementFrame(packet, hdr);
+}
+void
+HwmpProtocolMac::SendClaimPkt(IeClaim claimPkt)
+{
+  NS_LOG_FUNCTION(this);
+  //Create packet
+  Ptr<Packet> packet = Create<Packet>();
+  MeshInformationElementVector elements;
+  //Add Originator Address
+  //claimPkt.SetOriginAddress(m_parent->GetAddress());
+  elements.AddInformationElement(Ptr<IeClaim>(&claimPkt));
+  packet->AddHeader(elements);
+  packet->AddHeader(GetWifiActionHeader());
+  //create 802.11 header:
+  WifiMacHeader hdr;
+  hdr.SetType(WIFI_MAC_MGT_ACTION);
+  hdr.SetDsNotFrom();
+  hdr.SetDsNotTo();
+  hdr.SetAddr1(Mac48Address::GetBroadcast ());
+  hdr.SetAddr2(m_parent->GetAddress());
+  hdr.SetAddr3(m_protocol->GetAddress());
+  //Send Management frame
+  m_stats.txMgt++;
+  m_stats.txMgtBytes += packet->GetSize();
+  m_parent->SendManagementFrame(packet, hdr);
 }
 void
 HwmpProtocolMac::ForwardPerr (std::vector<HwmpProtocol::FailedDestination> failedDestinations, std::vector<
@@ -453,8 +519,8 @@ HwmpProtocolMac::GetChannelId () const
   return m_parent->GetFrequencyChannel ();
 }
 HwmpProtocolMac::Statistics::Statistics () :
-  txPreq (0), rxPreq (0), txPrep (0), rxPrep (0), txPerr (0), rxPerr (0), txMgt (0), txMgtBytes (0),
-  rxMgt (0), rxMgtBytes (0), txData (0), txDataBytes (0), rxData (0), rxDataBytes (0)
+  txPreq (0), rxPreq (0), txPrep (0), rxPrep (0), txPerr (0), rxPerr (0), txLpp (0), rxLpp (0), txMgt (0),
+  txMgtBytes (0), rxMgt (0), rxMgtBytes (0), txData (0), txDataBytes (0), rxData (0), rxDataBytes (0)
 {
 }
 void
@@ -464,9 +530,11 @@ HwmpProtocolMac::Statistics::Print (std::ostream & os) const
   "txPreq= \"" << txPreq << "\"" << std::endl <<
   "txPrep=\"" << txPrep << "\"" << std::endl <<
   "txPerr=\"" << txPerr << "\"" << std::endl <<
+  "txLpp=\"" << txLpp << "\"" << std::endl <<
   "rxPreq=\"" << rxPreq << "\"" << std::endl <<
   "rxPrep=\"" << rxPrep << "\"" << std::endl <<
   "rxPerr=\"" << rxPerr << "\"" << std::endl <<
+  "rxLpp=\"" << rxLpp << "\"" << std::endl <<
   "txMgt=\"" << txMgt << "\"" << std::endl <<
   "txMgtBytes=\"" << txMgtBytes << "\"" << std::endl <<
   "rxMgt=\"" << rxMgt << "\"" << std::endl <<
